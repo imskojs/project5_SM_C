@@ -1,0 +1,39 @@
+<ion-view id="board-list-category"
+    cache-view="true"
+    hide-back-button="true"
+>
+  <ion-nav-buttons side="left">
+      <button class="button button-icon icon ion-android-arrow-back"
+        ui-sref="main.home"
+      >
+      </button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <div class="row zero row-main-title-logo flex">
+      <div class="col"
+      >
+        <img src="img/main_page_Logo.png" class="main-title-logo">
+      </div>
+    </div>
+  </ion-nav-title>
+
+  <ion-content class="has-subheader">
+    <!-- row-list -->
+    <div class="row row-list zero relative"
+      ng-repeat="post in Category.Model.posts"
+      ng-click="Category.openLink(post.url)"
+    >
+      <div class="col zero col-list">
+        <img class="list-image"
+          ng-src="{{ post.photos[0].url}}"
+        >
+        <div class="desc-container row zero absolute flex-v">
+          <p class="zero list-text">
+            {{post.title}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+
+</ion-view>

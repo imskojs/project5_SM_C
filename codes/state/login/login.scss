@@ -1,0 +1,111 @@
+#login {
+  .login-content {
+    background: url('../img/login_bg.png') no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .row-login-icon {
+    margin-top: 110px;
+    .main-login-icon {
+      content: url('../img/splash_page_Logo.png');
+      height: 100px;
+    }
+  }
+
+  .row-input {
+    margin: {
+      top: 10px;
+    }
+    border: {
+      bottom: 1px solid white;
+    }
+    .col-input {
+      .phone-input, .password-input {
+        width: 100%;
+        background: transparent;
+        padding: {
+          left: 10px;
+        }
+        color: white;
+        font-size: 16px;
+        line-height: 16px;
+        &::-webkit-input-placeholder {
+          color: white;
+          font-size: 16px;
+          line-height: 16px;
+        }
+      }
+    }
+    .col-phone-icon {
+      .ion-ios-email-outline::before {
+        font-size: 24px;
+        color: white;
+        font-weight: bold;
+      }
+    }
+    .col-password-icon {
+      .ion-ios-locked-outline::before {
+        font-size: 24px;
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+  .row-phone-input {
+    margin: {
+      top: 80px;
+    }
+  }
+  .row-register {
+    margin: {
+      top: 10px;
+    }
+    justify-content: flex-end;
+    .col-register-common {
+      font-size: 14px;
+      line-height: 14px;
+    }
+    .col-register {
+      padding: {
+        right: 5px;
+      }
+      border: {
+        right: 1px solid white;
+      }
+      color: $yellow;
+    }
+    .col-find-password {
+      padding: {
+        left: 5px;
+      }
+      color: white;
+    }
+  }
+
+  section.buttons-section {
+    .col-login-button {
+      content: url('../img/login_Login.png');
+      width: 100%;
+    }
+    .col-login-button {
+      content: url('../img/login_Login.png');
+      width: 100%;
+      margin: {
+        top: 60px;
+      }
+    }
+    .col-facebook-button {
+      margin: {
+        top: 30px;
+      }
+      content: url('../img/login_Facebook.png');
+      width: 100%;
+    }
+  }
+
+
+
+
+
+}

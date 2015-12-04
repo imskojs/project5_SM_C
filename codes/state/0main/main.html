@@ -1,0 +1,199 @@
+<ion-view id="main"
+  cache-view="true"
+>
+
+  <ion-side-menus>
+    <ion-side-menu-content
+      edge-drag-threshold="false"
+      drag-content="false"
+    >
+      <!-- Main View -->
+      <ion-nav-bar class="bar-positive" align-title="center">
+      </ion-nav-bar>
+      <ion-nav-view name="main">
+      </ion-nav-view>
+    </ion-side-menu-content>
+
+      <!-- Side Menu -->
+    <ion-side-menu side="left" class="side-menu-container">
+      <ion-content class="side-menu-content">
+        <section class="side-menu-header">
+          <div class="row zero row-header">
+            <div class="col-25 col-header">
+              <div class="circle">
+                <img class="profile-picture"
+                  ng-hide="!appStorage.user.profile_picture"
+                  ng-src="{{appStorage.user.profile_picture}}"
+                >
+              </div>
+            </div>
+            <div class="col-65 col-header-text">
+              <p class="header-text"
+                ng-if="!appStorage.token"
+              >
+                로그인이 필요합니다
+              </p>
+              <div class="loggedIn-text"
+                ng-if="appStorage.token"
+              >
+                <p class="header-text">
+                  {{appStorage.user.nickname}}
+                </p>
+                <p class="zero sub-header phone-text">
+                  {{appStorage.user.email}}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row zero row-login"
+            ng-if="false"
+          >
+            <div class="col-10 col-login">
+              <i class="icon ion-log-in"></i>
+            </div>
+            <div class="col-85 col-login-text">
+              <p class="zero login-text">Log In</p>
+            </div>
+          </div>
+          <div class="row zero row-logout"
+            ng-if="appStorage.token"
+            ng-click="Main.logout();"
+          >
+            <div class="col-10 col-logout">
+              <i class="icon ion-log-out"></i>
+            </div>
+            <div class="col-85 col-logout-text">
+              <p class="zero logout-text">Log Out</p>
+            </div>
+          </div>
+        </section>
+        <section class="list-section">
+
+          <!-- 카테고리 -->
+          <div class="side-list flex-v"
+            ng-hide="isParam({type: 'abroad'})"
+            ng-click="Main.showCategory = !Main.showCategory"
+            ng-class="{selected: Main.showCategory}"
+          >
+            <p class="zero">
+              카테고리
+            </p>
+          </div>
+          <div class="category-list"
+            ng-if="Main.showCategory === true && isParam({type: 'local'})"
+          >
+
+              <!-- ui-sref="main.postList({type:'local', category: categoryItem.name})" -->
+              <!-- ui-sref-active="selected" -->
+            <div class="side-list sub-list flex-v"
+              ng-repeat="categoryItem in ::Main.Model.categoryList"
+              ng-class="{selected:isParam({category: categoryItem.name})}"
+              ng-click="goToState('main.postList', {type:'local', category: categoryItem.name})"
+
+            >
+              <p class="zero">
+                {{::categoryItem.korean}}
+              </p>
+            </div>
+          </div>
+
+          <!-- 상품등록 -->
+            <!-- ng-click="Main.showRegister = !Main.showRegister" -->
+          <div class="side-list flex-v"
+            ng-class="{selected: isState('main.postRegister')}"
+            ng-click="goToState('main.postRegister', {type: getParam('type'), method: 'create'})"
+          >
+            <p class="zero">
+              상품등록
+            </p>
+          </div>
+          <!-- 판매관리 -->
+            <!-- ng-click="Main.showMyPostList = !Main.showMyPostList" -->
+          <div class="side-list flex-v"
+            ng-class="{selected: isState('main.myPostList')}"
+            ng-click="goToState('main.myPostList', {type: getParam('type')})"
+
+          >
+            <p class="zero">
+              판매관리
+            </p>
+          </div>
+          <!-- 찜/댓글 -->
+          <div class="side-list flex-v"
+            ng-class="{selected: isState('main.favorite.saved')}"
+            ng-click="goToState('main.favorite.saved', {type: getParam('type'), by: 'favorited'})"
+          >
+            <p class="zero">
+              찜/댓글
+            </p>
+          </div>
+        </section>
+
+        <section class="setting-section">
+
+          <!-- 프로필 변경 -->
+          <div class="side-list flex-v"
+            ng-click="goToState('main.profile')"
+            ui-sref-active="selected"
+          >
+            <p class="zero">
+              프로필 변경
+            </p>
+          </div>
+
+          <!-- 쪽지함 -->
+          <div class="side-list flex-v"
+            ui-sref-active="selected"
+            ng-click="goToState('main.messageList')"
+          >
+            <p class="zero">
+              쪽지함
+            </p>
+          </div>
+
+          <!-- 알림설정 -->
+          <div class="side-list flex-v"
+            ng-class="{selected: Main.showAlarm}"
+            ng-click="Main.showAlarm = !Main.showAlarm"
+          >
+            <p class="zero">
+              알림설정
+            </p>
+          </div>
+          <div class="push-setting row zero"
+            ng-if="Main.showAlarm"
+          >
+            <div class="side-list sub-list flex-v"
+              ng-class="{selected: Main.Model.alarmOn}"
+              ng-click="Main.setAlarm(true)"
+            >
+              <p class="zero">
+                ON
+              </p>
+            </div>
+            <div class="side-list sub-list flex-v"
+              ng-class="{selected: !Main.Model.alarmOn}"
+              ng-click="Main.setAlarm(false)"
+            >
+              <p class="zero">
+                OFF
+              </p>
+            </div>
+          </div>
+
+          <!-- 회원탈퇴 -->
+          <div class="side-list flex-v"
+            ng-click="Main.terminationModal.show();"
+          >
+            <p class="zero">
+              회원탈퇴
+            </p>
+          </div>
+
+        </section>
+      </ion-content>
+    </ion-side-menu>
+  </ion-side-menus>
+
+</ion-view>
+

@@ -1,0 +1,102 @@
+<ion-view id="profile"
+    cache-view="true"
+    hide-back-button="false"
+>
+
+  <ion-nav-buttons side="left">
+      <button class="button button-icon icon ion-android-arrow-back"
+          ng-click="Profile.goBack()"
+      >
+      </button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    프로필
+  </ion-nav-title>
+
+  <ion-header-bar class="bar bar-subheader bar-light zero"
+      no-tap-scroll="true"
+  >
+    <div class="row zero flex height-100">
+      <div class="col zero flex">
+        <h2 class="subheader-title center zero">
+          프로필변경
+        </h2>
+      </div>
+    </div>
+  </ion-header-bar>
+  <ion-content class="has-subheader bg-stable">
+    <section class="profile-photo-section wrapper-90">
+      <p class="profile-photo-text yellow title">
+        프로필 사진
+      </p>
+      <div class="row zero row-photo">
+        <div class="col-photo col-25 flex-v">
+          <div class="circle">
+            <img class="profile-image"
+              ng-src="{{Profile.Model.dataArray[0] || appStorage.user.profile_picture}}">
+          </div>
+        </div>
+        <div class="col-35 col-photo-restrict-text">
+          <p class="zero restrict-text small pre"> 저작권침해
+            또는 지나치게
+            선정적인 이미지를
+            쓸 경우 불이익을
+            당할 수 있습니다
+          </p>
+        </div>
+        <div class="col zero col-buttons">
+          <p class="zero button-text top-button center radius"
+            ng-click="Profile.getPicture('camera')"
+          >
+            사진찍기
+          </p>
+          <p class="zero button-text center radius"
+            ng-click="Profile.getPicture('gallery')"
+          >
+            사진 고르기
+          </p>
+        </div>
+      </div>
+    </section>
+    <hr class="section-divider">
+
+    <section class="nickname-section wrapper-90">
+      <p class="profile-photo-text yellow title zero">
+        닉네임
+      </p>
+      <div class="row zero row-input">
+        <div class="col zero col-input">
+          <input type="text" class="input-password input-field" placeholder="닉네임을 입력해주세요"
+            ng-model="Profile.Model.form.nickname"
+          >
+        </div>
+      </div>
+      <p class="zero yellow small">
+        * 프로필 사진과 닉네임은 원활한 거래를위해 꼭 입력 해주세요
+      </p>
+    </section>
+
+    <section class="nickname-section wrapper-90 mt-20">
+      <p class="profile-photo-text yellow title zero">
+        전화번호
+      </p>
+      <div class="row zero row-input">
+        <div class="col zero col-input">
+          <input type="number" class="input-password input-field" placeholder="전화번호를 입력해주세요"
+            ng-model="Profile.Model.form.phone"
+          >
+        </div>
+      </div>
+    </section>
+    <hr class="section-divider">
+
+    <div class="row wrapper-90 flex row-button">
+      <p class="zero submit-button center radius"
+        ng-click="Profile.update()"
+      >
+        저장 / 변경 하기
+      </p>
+    </div>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,38 @@
+#announcement-list {
+  .announcement-list-content {
+    background: #1d3034;
+  }
+  .row-list {
+    height: 75px;
+    border: {
+      bottom: 1px solid lighten(#1d3034, 10);
+    }
+    .list-text {
+      margin: {
+        left: 5%;
+      }
+      color: white;
+      font-size: 18px;
+      letter-spacing: -0.5px;
+
+    }
+    .row-meta {
+      margin: {
+        top: 5px;
+      }
+      .username-text {
+        font-size: 16px;
+        line-height: 100%;
+        margin: {
+          left: 5%;
+        }
+      }
+      .date-text {
+        color: $light-grey;
+        margin: {
+          left: 2%;
+        }
+      }
+    }
+  }
+}

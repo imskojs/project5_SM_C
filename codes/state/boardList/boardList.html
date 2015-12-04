@@ -1,0 +1,37 @@
+<ion-view id="board-list"
+    cache-view="true"
+    hide-back-button="true"
+>
+  <ion-header-bar class="bar bar-subheader bar-light zero"
+      no-tap-scroll="true"
+  >
+    <div class="row zero flex height-100">
+      <div class="col zero col-subheader flex"
+        ng-class="{selected: isParam({by: 'magazine'})}"
+        ui-sref="main.boardList.category({by: 'magazine'})"
+      >
+        <p class="zero subheader-text selected">
+          잡지
+        </p>
+      </div>
+      <div class="col zero col-subheader flex"
+        ng-class="{selected: isParam({by: 'contest'})}"
+        ui-sref="main.boardList.category({by: 'contest'})"
+      >
+        <p class="zero subheader-text">
+          공모전
+        </p>
+      </div>
+      <div class="col zero col-subheader flex"
+        ng-class="{selected: isParam({by: 'job'})}"
+        ui-sref="main.boardList.category({by: 'job'})"
+      >
+        <p class="zero subheader-text">
+          취업
+        </p>
+      </div>
+    </div>
+  </ion-header-bar>
+  <ion-nav-view name="boardList">
+  </ion-nav-view>
+</ion-view>

@@ -1,0 +1,68 @@
+<ion-view id="login"
+  cache-view="true"
+  hide-nav-bar="true"
+>
+  <ion-content class="login-content">
+    <div class="wrapper-80">
+      <section class="login-main-icon-section">
+        <div class="row zero row-login-icon flex">
+          <i class="main-login-icon"> </i>
+        </div>
+      </section>
+
+      <section class="login-input-section">
+        <div class="row zero row-phone-input row-input">
+          <div class="col-10 col-phone-icon flex">
+            <i class="phone-icon icon ion-ios-email-outline"></i>
+          </div>
+          <div class="col-90 col-phone-input col-input">
+            <input type="email" class="phone-input" placeholder="이메일을 입력해주세요"
+              ng-model="Login.Model.form.email"
+            >
+          </div>
+        </div>
+
+        <div class="row zero row-password-input row-input">
+          <div class="col-10 col-password-icon flex">
+            <i class="password-icon icon ion-ios-locked-outline"></i>
+          </div>
+          <div class="col-90 col-password-input col-input">
+            <input type="password" class="password-input" placeholder="비밀번호를 입력해주세요"
+              ng-model="Login.Model.form.password"
+            >
+          </div>
+        </div>
+
+        <div class="row zero row-register">
+          <p class="col-register zero col-register-common"
+            ng-click="goToState('main.signup')"
+          >
+            회원가입
+          </p>
+<!--
+          <p class="col-find-password zero col-register-common"
+            ng-click=""
+          >
+            비밀번호 찾기
+          </p>
+ -->
+        </div>
+      </section>
+
+      <section class="buttons-section">
+        <div class="row flex zero">
+          <div class="col-button col-login-button"
+            ng-click="Login.loginHandler();"
+          >
+          </div>
+        </div>
+        <div class="row flex zero">
+          <div class="col-button col-facebook-button"
+            ng-click="Login.loginWithFacebook();"
+          >
+          </div>
+        </div>
+      </section>
+    </div>
+  </ion-content>
+</ion-view>

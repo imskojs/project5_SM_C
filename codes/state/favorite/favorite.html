@@ -1,0 +1,37 @@
+<ion-view id="favorite"
+    cache-view="true"
+    hide-back-button="false"
+>
+  <ion-nav-title>
+    <div class="row zero row-main-title-logo flex">
+      <div class="col">
+        <img src="img/main_page_Logo.png" class="main-title-logo">
+      </div>
+    </div>
+  </ion-nav-title>
+  <ion-header-bar class="bar bar-subheader bar-light zero"
+      no-tap-scroll="true"
+  >
+    <div class="row zero flex height-100">
+      <div class="col zero col-subheader flex selected"
+        ui-sref="main.favorite.saved({type: $stateParams.type, by: 'favorited'})"
+        ui-sref-active="selected"
+      >
+        <p class="zero subheader-text selected">
+          찜하기
+        </p>
+      </div>
+      <div class="col zero col-subheader flex"
+        ui-sref="main.favorite.saved({type: $stateParams.type, by: 'commented'})"
+        ui-sref-active="selected"
+      >
+        <p class="zero subheader-text">
+          댓글
+        </p>
+      </div>
+    </div>
+  </ion-header-bar>
+
+  <ion-nav-view name="favorite">
+  </ion-nav-view>
+</ion-view>

@@ -1,0 +1,104 @@
+#profile {
+  // Common input
+  .row-input {
+    margin: {
+      bottom: 15px;
+    }
+    .col-input {
+      border: {
+        bottom: 1px solid white;
+      }
+      .input-field {
+        width: 100%;
+        background: transparent;
+        font-size: 14px;
+        color: white;
+        &::-webkit-input-placeholder {
+          font-size: 14px;
+          line-height: 14px;
+        }
+      }
+    }
+  }
+  .row-button {
+    margin: {
+      top: 25px;
+    }
+    .submit-button {
+      background: $yellow;
+      width: 100%;
+      font-size: 15px;
+      color: white;
+      padding: {
+        top: 10px;
+        bottom: 10px;
+      }
+    }
+  }
+
+  .subheader-title {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .title {
+    font-size: 15px;
+    line-height: 15px;
+    font-weight: bold;
+  }
+  section.profile-photo-section {
+    margin-top: 15px;
+  }
+  .row-photo {
+    .col-photo {
+      .circle {
+        width: 70px;
+        height: 70px;
+      }
+      .profile-image {
+        border-radius: 100%;
+        width: 68px;
+        height: 68px;
+      }
+    }
+    .col-photo-restrict-text {
+      .restrict-text {
+        line-height: 120%;
+        color: $light-grey;
+        letter-spacing: -1px;
+      }
+    }
+    .button-text {
+      background: $yellow;
+      padding: {
+        top: 5px;
+        bottom: 5px;
+      }
+      color: white;
+      font-size: 15px;
+      line-height: 120%;
+      &.top-button {
+        margin: {
+          bottom: 14px;
+        }
+      }
+    }
+  }
+
+  .row-button {
+    margin: {
+      top: 25px;
+    }
+    .submit-button {
+      background: $yellow;
+      width: 100%;
+      font-size: 15px;
+      color: white;
+      padding: {
+        top: 10px;
+        bottom: 10px;
+      }
+    }
+  }
+
+}

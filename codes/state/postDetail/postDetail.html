@@ -1,0 +1,264 @@
+<ion-view id="post-detail"
+    cache-view="true"
+>
+
+  <ion-nav-buttons side="left">
+      <button class="button button-icon icon ion-android-arrow-back"
+          ng-click="PostDetail.goBack()"
+      >
+      </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <div class="row zero row-main-title-logo flex">
+      <div class="col"
+        ng-if="isParam({type: 'local'})"
+      >
+        <img src="img/main_page_Logo.png" class="main-title-logo">
+      </div>
+      <div class="col"
+        ng-if="isParam({type: 'abroad'})"
+      >
+        <img src="img/uhakheader.png" class="main-title-logo">
+      </div>
+    </div>
+  </ion-nav-title>
+
+  <ion-content class="post-detail-content">
+    <section class="wrapper-90 radius-bottom">
+
+      <!-- photo slider section -->
+      <section class="photo-section relative radius-bottom">
+        <ion-slide-box class="slide-box relative" show-pager="true"
+          ng-click="PostDetail.slideBoxModal.show();"
+        >
+          <ion-slide class="slides"
+            ng-repeat="photo in PostDetail.Model.post.photos"
+          >
+            <div>
+              <img class="post-image radius-top"
+                  ng-src="{{photo.url}}"
+              >
+            </div>
+          </ion-slide>
+        </ion-slide-box>
+
+        <div class="row zero row-title">
+          <div class="col-20 col-user-photo flex">
+            <img class="user-photo"
+              ng-src="{{PostDetail.getUserPhoto(PostDetail.Model.post.createdBy)}}">
+          </div>
+          <div class="col-72 col-title">
+
+            <div class="row row-title-price zero">
+              <div class="col zero col-title-text flex-v">
+                <p class="zero title-text">
+                  {{PostDetail.Model.post.name}}
+                </p>
+              </div>
+              <div class="col-price-text flex radius"
+                ng-if="isParam({type: 'local'})"
+              >
+                <p class="zero price-text">
+                  {{PostDetail.Model.post.price | number}}
+                </p>
+              </div>
+            </div>
+
+            <div class="row zero row-nickname-category">
+              <div class="col zero col-nickname">
+                <p class="zero nickname-text">
+                  {{PostDetail.getUserNickname(PostDetail.Model.post.createdBy)}}
+                </p>
+              </div>
+              <div class="col zero col-category"
+                ng-if="isParam({type: 'local'})"
+              >
+                <p class="zero right category-text">
+                  [{{PostDetail.Model.post.category | categoryToKorean}}]
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- likes container -->
+        <div class="absolute likes-container">
+          <div class="row zero row-likes">
+            <div class="col-20 col-heart flex">
+              <i class="heart-icon"></i>
+            </div>
+            <div class="col zero col-likes">
+              <p class="zero post-text text-overflow">
+                {{PostDetail.Model.post.likes || 0}}
+              </p>
+            </div>
+            <div class="col-20 col-bubble flex">
+              <i class="bubble-icon"></i>
+            </div>
+            <div class="col zero col-commentsCount">
+              <p class="zero post-text text-overflow">
+                {{PostDetail.Model.post.commentsCount || 0}}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- heart-top -->
+        <div class="absolute favorite-container flex"
+          ng-class="{selected: PostDetail.isFavorite(PostDetail.Model.post.id)}"
+          ng-click="PostDetail.toggleSaveToFavorite(PostDetail.Model.post.id)"
+        >
+            <i class="favorite-icon">
+            </i>
+        </div>
+
+      </section> <!-- photo sectionend -->
+
+      <!-- product description section -->
+      <section class="description-section radius">
+        <div class="sub-container">
+          <p class="zero sub-title">
+            상품등록 날짜
+          </p>
+          <p class="zero desc-text">
+            {{PostDetail.Model.post.updatedAt | date:'yyyy.MM.dd HH:mm'}}
+          </p>
+        </div>
+        <div class="sub-container row zero">
+          <div class="col zero">
+            <p class="zero sub-title">
+              팔고싶은 장소
+            </p>
+            <p class="zero desc-text">
+              {{PostDetail.Model.post.address}}
+            </p>
+          </div>
+
+          <!-- ng-if="isParam({type: 'abroad'})" -->
+          <div class="col-30 col-map flex-v"
+            ng-if="isParam({type: 'local'})"
+            ng-click="loading(); goToState('main.daumMap', {id: PostDetail.Model.post.id})"
+          >
+            <div class="map-wrapper center">
+              <i class="map-icon ion-android-map"></i>
+              <p class="zero map-text">
+                지도에서보기
+              </p>
+            </div>
+          </div>
+
+        </div>
+        <div class="sub-container"
+          ng-if="isParam({type: 'local'})"
+        >
+          <p class="zero sub-title">
+            학교
+          </p>
+          <p class="zero desc-text">
+            {{PostDetail.Model.post.school}}
+          </p>
+        </div>
+        <div class="sub-container no-border">
+          <p class="zero desc-text pre">
+            {{PostDetail.Model.post.description}}
+          </p>
+        </div>
+      </section> <!-- product description section ends -->
+
+
+      <!-- commentsCount section -->
+      <section class="reply-count-section row zero flex-v">
+        <p class="zero light-grey small">
+          댓글
+        </p>
+        <p class="reply-number zero green small">
+          &nbsp;{{PostDetail.Model.post.commentsCount || 0}}
+        </p>
+      </section>
+
+      <!-- Input section -->
+      <section class="input-section row zero flex-v">
+        <i class="school-market-icon">
+        </i>
+        <div class="col-70 col-input">
+          <input type="text" placeholder="댓글을 입력해 주세요"
+            ng-model="PostDetail.comment"
+          >
+        </div>
+        <p class="zero light-grey center comment-button radius"
+          ng-click="PostDetail.addComment(PostDetail.comment)"
+        >
+          COMMENT
+        </p>
+      </section>
+
+      <!-- Comments section -->
+      <section class="comments-section">
+        <ul class="comments">
+          <li class="comment row zero flex-v"
+            ng-repeat="comment in PostDetail.Model.comments"
+          >
+            <img class="profile-image circle"
+              ng-src="{{PostDetail.getUserPhoto(comment.createdBy)}}"
+            >
+            <div class="col-2 child-comment"
+              ng-if="!comment.isParent"
+            >
+            </div>
+            <div class="col zero col-comment-content">
+              <div class="row zero row-cross"
+                ng-if="PostDetail.isWrittenByUser(comment.createdBy)"
+              >
+                <i class="icon ion-ios-close-empty"></i>
+              </div>
+              <div class="row zero row-comment-name-date">
+                <p class="zero name-text green">
+                  {{PostDetail.getUserNickname(comment.createdBy)}}
+                </p>
+                <p class="zero date-text">
+                  {{comment.updatedAt | date: 'yyyy.MM.dd HH:mm'}}
+                </p>
+              </div>
+
+              <div class="zero row row-comment-content-text">
+                <p class="zero comment-content-text pre">
+                  {{comment.content}}
+                </p>
+              </div>
+
+                <!-- ng-click="PostDetail.reply(comment.id, PostDetail.commentReply)" -->
+              <div class="row zero row-reply"
+                ng-if="comment.isParent"
+                ng-click="PostDetail.replyModalHandler(comment);"
+              >
+                <p class="zero reply-text">답글</p>
+              </div>
+
+            </div>
+          </li> <!-- comment ends -->
+        </ul>
+      </section>
+    </section> <!-- wrapper-90 ends -->
+  </ion-content>
+
+  <ion-footer-bar class="bar-light footer zero custom-footer">
+    <div class="row row-footer zero">
+        <div class="col zero flex"
+          ng-if="PostDetail.Model.post.showPhone"
+          ng-click="PostDetail.call(PostDetail.Model.post.phone)"
+        >
+            <p class="zero footer-text center radius flex">
+                전화
+            </p>
+        </div>
+        <div class="col zero flex border-left">
+            <p class="zero footer-text center radius flex"
+              ng-click="PostDetail.sendMessage()"
+            >
+                쪽지보내기
+            </p>
+        </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

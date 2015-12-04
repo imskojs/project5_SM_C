@@ -1,0 +1,151 @@
+<ion-view id="signup"
+  cache-view="true"
+>
+  <ion-nav-title>
+    회원가입
+  </ion-nav-title>
+  <ion-content class="signup-content has-header">
+
+    <section class="phone-input-section wrapper-90">
+      <div class="row zero row-title">
+        <p class="zero title yellow">
+          이메일
+        </p>
+      </div>
+      <div class="row zero row-input">
+        <div class="col zero col-input">
+          <input type="email" class="input-phone input-field" placeholder="이메일을 입력해주세요"
+            ng-model="Signup.Model.form.email"
+          >
+        </div>
+      </div>
+<!--
+      <div class="row zero row-input">
+        <div class="col-50 col-input">
+          <input type="number" class="input-field" placeholder="인증번호를 입력해주세요">
+        </div>
+        <div class="col zero col-button flex-v">
+          <p class="zero button-text radius"
+            ng-click=""
+          >
+            인증번호 요청
+          </p>
+        </div>
+      </div>
+ -->
+    </section>
+    <section class="phone-input-section wrapper-90">
+      <div class="row zero row-title">
+        <p class="zero title yellow">
+          전화번호
+        </p>
+      </div>
+      <div class="row zero row-input">
+        <div class="col zero col-input">
+          <input type="number" class="input-phone input-field" placeholder="전화번호를 입력해주세요"
+            ng-model="Signup.Model.form.phone"
+          >
+        </div>
+      </div>
+    </section>
+    <hr class="section-divider">
+
+    <section class="password-input-section wrapper-90">
+      <div class="row zero row-title">
+        <p class="zero title yellow">
+          비밀번호 설정
+        </p>
+      </div>
+      <div class="row zero row-input">
+        <div class="col zero col-input">
+          <input type="password" class="input-password input-field" placeholder="비밀번호를 입력해주세요"
+            ng-model="Signup.Model.form.password"
+          >
+        </div>
+      </div>
+
+      <div class="row zero row-title">
+        <p class="zero title yellow">
+          비밀번호 다시 확인
+        </p>
+      </div>
+      <div class="row zero row-input">
+        <div class="col zero col-input">
+          <input type="password" class="input-password input-field" placeholder="비밀번호를 다시 입력해주세요"
+            ng-model="Signup.Model.passwordConfirm"
+          >
+        </div>
+      </div>
+    </section>
+    <hr class="section-divider">
+
+    <section class="agreement-select-section wrapper-90">
+
+      <div class="row zero row-select">
+        <div class="select-wrapper col-80 flex-v"
+          ng-click="Signup.Model.agree = !Signup.Model.agree"
+        >
+          <div class="col-15 col-select flex-v">
+            <div class="select-box radius ion-checkmark-round flex"
+              ng-class="{selected: Signup.Model.agree}"
+            >
+            </div>
+          </div>
+          <div class="col-85 col-text">
+            <p class="zero text">이용약관 동의</p>
+          </div>
+        </div>
+        <div class="col-more col-20 flex-v"
+          ng-click=""
+        >
+          <div class="col-80">
+            <p class="zero text">
+              약관보기
+            </p>
+          </div>
+          <div class="col-20">
+            <i class="right-arrow ion-arrow-right-b"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="row zero row-select">
+        <div class="select-wrapper col-80 flex-v"
+          ng-click="Signup.Model.private = !Signup.Model.private"
+        >
+          <div class="col-15 col-select flex-v">
+            <div class="select-box radius ion-checkmark-round flex"
+              ng-class="{selected: Signup.Model.private}"
+            >
+            </div>
+          </div>
+          <div class="col-85 col-text">
+            <p class="zero text">개인정보 취급 방침 동의</p>
+          </div>
+        </div>
+        <div class="col-more col-20 flex-v"
+          ng-click=""
+        >
+          <div class="col-80">
+            <p class="zero text">
+              약관보기
+            </p>
+          </div>
+          <div class="col-20">
+            <i class="right-arrow ion-arrow-right-b"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+    <hr class="section-divider">
+
+    <div class="row wrapper-90 flex row-button">
+      <p class="zero register-button center radius"
+        ng-click="Signup.handleSignup();"
+      >
+        가입완료
+      </p>
+    </div>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,31 @@
+<ion-view id="announcement"
+    cache-view="true"
+    hide-back-button="false"
+>
+
+  <ion-header-bar class="bar bar-subheader bar-light zero"
+      no-tap-scroll="true"
+  >
+    <div class="row zero flex height-100">
+      <div class="col zero col-subheader flex"
+        ui-sref="main.announcement.list({by: 'notification'})"
+        ng-class="{selected: isParam({by: 'notification'})}"
+      >
+        <p class="zero subheader-text">
+          공지사항
+        </p>
+      </div>
+      <div class="col zero col-subheader flex"
+        ui-sref="main.announcement.list({by: 'event'})"
+        ng-class="{selected: isParam({by: 'event'})}"
+      >
+        <p class="zero subheader-text">
+          이벤트
+        </p>
+      </div>
+    </div>
+  </ion-header-bar>
+
+  <ion-nav-view name="announcement">
+  </ion-nav-view>
+</ion-view>

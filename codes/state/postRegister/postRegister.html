@@ -1,0 +1,293 @@
+<ion-view id="post-register"
+    cache-view="true"
+    hide-back-button="false"
+>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+      ng-click="goBack(); PostRegister.reset();"
+    >
+    </button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <div class="row zero row-main-title-logo flex">
+      <div class="col"
+        ng-if="isParam({type: 'local'})"
+      >
+        <img src="img/main_page_Logo.png" class="main-title-logo">
+      </div>
+      <div class="col"
+        ng-if="isParam({type: 'abroad'})"
+      >
+        <img src="img/uhakheader.png" class="main-title-logo">
+      </div>
+    </div>
+  </ion-nav-title>
+
+  <ion-header-bar class="bar bar-subheader bar-light zero"
+      no-tap-scroll="true"
+  >
+    <div class="row zero flex height-100">
+      <div class="col zero flex">
+        <h2 class="subheader-title center zero">
+          <span ng-if="isParam({method: 'create'})">상품등록</span>
+          <span ng-if="isParam({method: 'update'})">상품수정</span>
+        </h2>
+      </div>
+    </div>
+  </ion-header-bar>
+
+  <ion-content class="has-subheader bg-stable">
+    <div class="row row-product-photo wrapper-90">
+      <div class="col-50 zero col-main-image">
+        <div class="photo-frame flex relative">
+
+          <div class="ion-minus-circled main-circled absolute"
+            ng-if="PostRegister.showCircle(0);"
+            ng-click="PostRegister.removePhoto(0);"
+          >
+          </div>
+
+          <img class="main-photo"
+            ng-show="PostRegister.showCircle(0);"
+            ng-src="{{PostRegister.getPhoto(0);}}"
+          >
+<!--
+          <p class="zero small pre"
+            ng-if="false"
+          >
+            이미지 제한은 200KB 이하이며
+            저작권침해 또는
+            지나치게 선정적인 이미지를
+            쓸 경우 불이익을 당할 수 있습니다
+          </p>
+ -->
+        </div>
+      </div>
+      <div class="col-48 zero col-buttons">
+        <p class="zero button-text top-button center radius"
+          ng-click="PostRegister.getImage('camera')"
+        >
+          사진찍기
+        </p>
+        <p class="zero button-text center radius"
+          ng-click="PostRegister.getImage('gallery')"
+        >
+          사진 고르기
+        </p>
+      </div>
+    </div>
+
+    <div class="row row-product-photo-list wrapper-90 wrap">
+      <div class="col-32 sub-frames relative">
+
+        <div class="ion-minus-circled absolute"
+          ng-if="PostRegister.showCircle(1);"
+        ></div>
+        <img class="sub-frame-image"
+          ng-show="PostRegister.showCircle(1);"
+          ng-src="{{PostRegister.getPhoto(1);}}"
+        >
+      </div>
+      <div class="col-32 sub-frames relative">
+        <div class="ion-minus-circled absolute"
+          ng-if="PostRegister.showCircle(2)"
+        ></div>
+        <img class="sub-frame-image"
+          ng-show="PostRegister.showCircle(2);"
+          ng-src="{{PostRegister.getPhoto(2);}}"
+        >
+      </div>
+      <div class="col-32 sub-frames relative">
+        <div class="ion-minus-circled absolute"
+          ng-if="PostRegister.showCircle(3)"
+        ></div>
+        <img class="sub-frame-image"
+          ng-show="PostRegister.showCircle(3);"
+          ng-src="{{PostRegister.getPhoto(3);}}"
+        >
+      </div>
+      <div class="col-32 sub-frames relative">
+        <div class="ion-minus-circled absolute"
+          ng-if="PostRegister.showCircle(4)"
+        ></div>
+        <img class="sub-frame-image"
+          ng-show="PostRegister.showCircle(4);"
+          ng-src="{{PostRegister.getPhoto(4)}}"
+        >
+      </div>
+    </div>
+    <hr class="section-divider">
+
+    <section class="category-section wrapper-90"
+      ng-if="isParam({type: 'local'})"
+    >
+      <p class="yellow title zero">
+        카테고리 선택
+      </p>
+      <div class="row-input">
+        <div class="col-input">
+          <select class="input-field"
+            ng-model="PostRegister.Model.form.category"
+          >
+            <option
+              ng-repeat="option in PostRegister.categoryList"
+              value="{{option.name}}"
+            >
+              {{option.korean}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </section>
+    <hr class="section-divider"
+      ng-if="isParam({type: 'local'})"
+    >
+
+    <section class="title-section input-section wrapper-90">
+      <p class="yellow title zero">
+        제목
+      </p>
+      <div class="row-input">
+        <div class="col-input">
+          <input type="text" class="input-field" placeholder="제목을 입력해주세요"
+            ng-model="PostRegister.Model.form.name"
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section input-section wrapper-90">
+      <p class="yellow title zero">
+        내용
+      </p>
+      <div class="row-input">
+        <div class="col-input">
+          <input type="text" class="input-field" placeholder="내용을 입력해주세요"
+            ng-model="PostRegister.Model.form.description"
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="school-section input-section wrapper-90"
+      ng-if="isParam({type: 'local'})"
+    >
+      <p class="yellow title zero">
+        학교선택
+      </p>
+      <div class="row zero row-input">
+        <div class="col zero col-input">
+
+          <tags-input
+            ng-model="PostRegister.tags"
+            add-from-autocomplete-only="true"
+            placeholder="학교를 선택하세요"
+          >
+            <auto-complete source="PostRegister.getSchools()"
+              max-results-to-show="5"
+              min-length="1"
+              filter-results="true"
+            ></auto-complete>
+          </tags-input>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="school-section input-section wrapper-90"
+      ng-if="isParam({type: 'local'})"
+    >
+      <p class="yellow title zero">
+        가격
+      </p>
+      <div class="row-input">
+        <div class="col-input">
+          <input type="number" class="input-field" placeholder="가격을 입력해주세요"
+            ng-model="PostRegister.Model.form.price"
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="school-section input-section wrapper-90">
+      <p class="yellow title zero">
+        팔고싶은 장소 지정
+      </p>
+      <div class="row zero row-input">
+        <div class="col zero col-input">
+          <input type="text" class="input-field" placeholder="국가 / 지역 / 역(건물) 주변까지 검색하여 입력"
+            ng-model="PostRegister.Model.form.address"
+            ng-enter="isParam({type: 'local'}) ? PostRegister.searchPlace() : null"
+          >
+        </div>
+        <div class="col-10 col-icon flex"
+          ng-click="PostRegister.searchPlace();"
+          ng-if="isParam({type: 'local'})"
+        >
+          <i class="ion-android-search"></i>
+        </div>
+      </div>
+      <p class="zero address-title-text"
+        ng-if="PostRegister.Model.places.length > 0"
+      >
+        장소를 골라주세요
+      </p>
+      <div class="row zero row-places"
+        ng-if="PostRegister.Model.places.length > 0"
+        ng-repeat="place in PostRegister.Model.places"
+        ng-click="PostRegister.selectPlace(place);"
+      >
+        <div class="col zero col-address flex">
+          <p class="zero address-text">
+            {{place.address}}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="school-section input-section wrapper-90">
+      <p class="yellow title zero">
+        전화번보 공개
+      </p>
+      <div class="row zero row-input row-checkbox">
+
+        <div class="col zero flex-v col-checkbox"
+          ng-class="{selected: PostRegister.Model.form.showPhone}"
+          ng-click="PostRegister.toggleShowPhone(true)"
+        >
+          <div class="checkbox radius flex">
+            <i class="check-icon ion-checkmark"></i>
+          </div>
+          <p class="checkbox-text zero">전화번호 공개</p>
+        </div>
+
+        <div class="col zero col-checkbox flex-v"
+          ng-class="{selected: !PostRegister.Model.form.showPhone}"
+          ng-click="PostRegister.toggleShowPhone(false)"
+        >
+          <div class="checkbox radius flex">
+            <i class="check-icon ion-checkmark"></i>
+          </div>
+          <p class="checkbox-text zero">전화번호 비공개</p>
+        </div>
+
+      </div>
+    </section>
+    <hr class="section-divider">
+
+    <div class="row wrapper-90 flex row-button">
+      <p class="zero submit-button center radius"
+        ng-if="isParam({method: 'create'})"
+        ng-click="PostRegister.create()"
+      >
+        상품 등록
+      </p>
+      <p class="zero submit-button center radius"
+        ng-if="isParam({method: 'update'})"
+        ng-click="PostRegister.update()"
+      >
+        수정하기
+      </p>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,15 @@
+#announcement {
+  .col-subheader {
+    height: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    color: $light-grey;
+    &.selected {
+      color: white;
+      border: {
+        bottom: 4px solid $yellow;
+      }
+    }
+  }
+
+}

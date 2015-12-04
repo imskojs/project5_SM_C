@@ -1,0 +1,93 @@
+<ion-view id="home"
+    cache-view="true"
+    hide-back-button="true"
+>
+
+  <ion-nav-title>
+    <div class="row zero row-main-title-logo flex">
+      <div class="col">
+        <img src="img/main_page_Logo.png" class="main-title-logo">
+      </div>
+    </div>
+  </ion-nav-title>
+
+  <ion-nav-buttons side="right">
+      <button class="button button-icon icon ion-android-share-alt"
+          ng-click="Home.share()"
+      >
+      </button>
+  </ion-nav-buttons>
+
+  <ion-content class="home-content">
+
+    <!-- 학교장터 -->
+    <div class="row row-school-market zero flex bg"
+      ng-click="goToState('main.postList', {type: 'local'})"
+    >
+      <div class="col-30 col-school-market">
+        <i class="school-market-icon auto block"></i>
+        <p class="zero title-text center">학교장터</p>
+        <p class="zero summary-text center">School Market</p>
+      </div>
+    </div>
+
+    <!-- 유학장터 -->
+    <div class="row row-abroad-market zero flex bg"
+      ng-click="goToState('main.postList', {type:'abroad'});"
+    >
+      <div class="col-30 col-abroad-market"
+      >
+        <i class="abroad-market-icon auto block"></i>
+        <p class="zero title-text center">유학장터</p>
+        <p class="zero summary-text center">Abroad Market</p>
+
+      </div>
+    </div>
+
+    <!-- 잡지 / 공모전 -->
+    <div class="row row-magazine zero">
+      <div class="col col-magazine zero bg flex"
+        ui-sref="main.boardList.category({by: 'magazine'})"
+      >
+        <div>
+          <i class="magazine-icon auto block"></i>
+          <p class="zero title-text center">잡지</p>
+          <p class="zero summary-text center">Magazine</p>
+        </div>
+      </div>
+      <div class="col col-contest zero bg flex"
+        ui-sref="main.boardList.category({by: 'contest'})"
+      >
+        <div>
+          <i class="contest-icon auto block"></i>
+          <p class="zero title-text center">공모전</p>
+          <p class="zero summary-text center">Contest</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 취업 / 게시판 -->
+    <div class="row row-job zero">
+      <div class="col col-job zero bg flex"
+        ui-sref="main.boardList.category({by: 'job'})"
+      >
+        <div>
+          <i class="job-icon auto block"></i>
+          <p class="zero title-text center">취업</p>
+          <p class="zero summary-text center">Job</p>
+        </div>
+      </div>
+      <div class="col col-board zero bg flex"
+        ui-sref="main.announcement.list({by: 'notification'})"
+        ng-click="goToState('main.announcement.list')"
+      >
+        <div>
+          <i class="board-icon auto block"></i>
+          <p class="zero title-text center">게시판</p>
+          <p class="zero summary-text center">Board</p>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,47 @@
+<ion-view id="announcement-list"
+    cache-view="true"
+    hide-back-button=""
+>
+  <ion-nav-buttons side="left">
+      <button class="button button-icon icon ion-android-arrow-back"
+          ng-click="goToState('main.home')"
+      >
+      </button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <div class="row zero row-main-title-logo flex">
+      <div class="col">
+        <img src="img/main_page_Logo.png" class="main-title-logo">
+      </div>
+    </div>
+  </ion-nav-title>
+
+<!--   <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-home"
+      ng-click="goToState('main.home')"
+    >
+    </button>
+  </ion-nav-buttons>
+ -->
+  <ion-content class="has-subheader announcement-list-content">
+    <!-- row-list -->
+    <div class="row zero row-list flex-v"
+      ng-repeat="post in AnnouncementList.Model.posts"
+      ui-sref="main.announcementDetail({id: post.id, by: $stateParams.by})"
+    >
+      <div class="col zero col-list">
+        <p class="zero list-text">
+        {{post.title}}
+        </p>
+        <div class="row zero row-meta flex-v">
+          <p class="zero username-text yellow">
+            {{post.createdBy.user}}
+          </p>
+          <p class="zero small date-text">
+          {{post.createdAt | date: 'yyyy.MM.dd HH:mm'}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

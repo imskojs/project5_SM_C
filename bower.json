@@ -1,0 +1,17 @@
+{
+  "name": "HelloIonic",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.1.1"
+  },
+  "dependencies": {
+    "angular-resource": "~1.4.7",
+    "firebase": "~2.3.1",
+    "moment": "~2.10.6",
+    "underscore": "~1.8.3",
+    "ngCordova": "~0.1.23-alpha",
+    "ngstorage": "~0.3.10",
+    "ng-file-upload": "~10.0.2",
+    "ng-tags-input": "~3.0.0"
+  }
+}

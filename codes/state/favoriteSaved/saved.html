@@ -1,0 +1,118 @@
+<ion-view id="saved"
+    cache-view="true"
+    hide-back-button="false"
+>
+  <ion-nav-buttons side="left">
+      <button class="button button-icon icon ion-android-arrow-back"
+        ui-sref="main.postList({type: getParam('type')})"
+      >
+      </button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <div class="row zero row-main-title-logo flex">
+      <div class="col"
+        ng-if="isParam({type: 'local'})"
+      >
+        <img src="img/main_page_Logo.png" class="main-title-logo">
+      </div>
+      <div class="col"
+        ng-if="isParam({type: 'abroad'})"
+      >
+        <img src="img/uhakheader.png" class="main-title-logo">
+      </div>
+    </div>
+  </ion-nav-title>
+  <ion-content class="has-subheader bg-stable">
+    <p class="favorite-text zero"
+      ng-if="isParam({by: 'favorited'})"
+    >
+      찜한 상품 모아보기
+    </p>
+    <p class="favorite-text zero"
+      ng-if="isParam({by: 'commented'})"
+    >
+      댓글 단 상품 모아보기
+    </p>
+
+    <div class="row row-list zero" ng-shadow>
+    <div class="col zero col-list"
+      collection-repeat="post in Saved.Model.posts"
+      item-height="Saved.dynamicStyle(post).height"
+      item-width="Saved.dynamicStyle(post).width"
+    >
+      <!-- ads -->
+      <div class="list-content-ads row zero"
+        ng-if="post.isAds"
+      >
+        <div class="col zero flex">
+          <img class="image-ads"
+            ng-src="{{post.photos[0].url}}"
+          >
+        </div>
+      </div>
+
+      <!-- product -->
+      <div class="list-content relative"
+        ng-if="!post.isAds"
+        ui-sref="main.postDetail({type: $stateParams.type, id: post.id})"
+      >
+        <img class="list-image"
+          ng-src="{{post.photos[0].url}}"
+        >
+        <div class="detail-container absolute">
+
+          <!-- First row -->
+          <p class="zero text-overflow post-title post-text">
+            {{post.name}}
+          </p>
+
+          <!-- Second row -->
+          <div class="row zero row-likes">
+            <div class="col-20 col-heart flex">
+                <i class="heart-icon"></i>
+            </div>
+            <div class="col-20 col-likes">
+              <p class="zero post-text text-overflow">
+                {{post.likes}}
+              </p>
+            </div>
+            <div class="col-20 col-bubble flex">
+              <i class="bubble-icon"></i>
+            </div>
+            <div class="col-20 col-commentsCount">
+              <p class="zero post-text text-overflow">
+                {{post.commentsCount || 0}}
+              </p>
+            </div>
+          </div>
+
+          <div class="row zero row-price"
+            ng-if="true"
+          >
+            <div class="col zero">
+              <p class="zero post-text post-category">
+                [{{post.category | categoryToKorean}}]
+              </p>
+            </div>
+            <div class="col zero">
+              <p class="zero post-text post-price right">
+                {{post.price | number}}
+              </p>
+            </div>
+          </div>
+
+          <div class="row zero row-price"
+            ng-if="false"
+          >
+            <div class="col zero">
+              <p class="zero post-text post-price text-overflow">
+                {{post.address}}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- col-list end -->
+  </div> <!-- row-list end -->
+  </ion-content>
+</ion-view>

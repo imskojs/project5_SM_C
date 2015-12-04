@@ -1,0 +1,168 @@
+<ion-view id="post-list"
+  cache-view="true"
+  hide-back-button="true"
+>
+
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-navicon"
+      ng-click="toggleSideMenu()"
+    >
+    </button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <div class="row zero row-main-title-logo flex">
+      <div class="col"
+        ng-if="isParam({type: 'local'})"
+      >
+        <img src="img/main_page_Logo.png" class="main-title-logo">
+      </div>
+      <div class="col"
+        ng-if="isParam({type: 'abroad'})"
+      >
+        <img src="img/uhakheader.png" class="main-title-logo">
+      </div>
+    </div>
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-home"
+      ng-click="goToState('main.home')"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-header-bar class="bar bar-light bar-subheader bar-input zero flex">
+    <div class="row row-input auto zero">
+      <div class="col-85 col-input zero">
+        <input class="radius-left" type="text" placeholder="학교명, 상품명, 장소를 검색하세요."
+            ng-model="PostList.searchWord"
+            ng-enter="PostList.search()"
+        >
+      </div>
+      <div class="col-15 col-search zero flex radius-right"
+          ng-click="PostList.search()"
+      >
+        <i class="ion-ios-search-strong"></i>
+      </div>
+    </div>
+  </ion-header-bar>
+
+  <ion-content class="has-subheader post-list-content">
+      <!-- 지도에서 상품보기 -->
+      <div class="row zero bg-stable look-map flex auto radius"
+        ng-click="goToState('main.daumMap', {findMe: true})"
+        ng-if="isParam({type: 'local'})"
+      >
+        <div class="col-image">
+          <i class="ion-android-map">
+          </i>
+        </div>
+        <div class="col-map-text"
+        >
+          <p class="zero map-text">
+            지도에서 상품보기
+          </p>
+        </div>
+      </div>
+
+      <div class="row row-list zero" ng-shadow>
+        <div class="col zero col-list"
+          collection-repeat="post in PostList.Model.posts"
+          item-height="PostList.dynamicStyle(post).height"
+          item-width="PostList.dynamicStyle(post).width"
+        >
+          <!-- ads -->
+          <div class="list-content-ads row zero"
+            ng-if="post.isAds && !PostList.Model.posts[$index-1].isAds"
+            ng-click="PostList.openLink(post.url)"
+          >
+            <div class="col zero flex">
+              <img class="image-ads"
+                ng-src="{{post.photos[0].url}}"
+              >
+            </div>
+          </div>
+
+          <!-- product -->
+          <div class="list-content relative"
+            ng-if="!post.isAds && !post.soldOut"
+            ng-click="post.soldOut ? PostList.showAlert() : goToState('main.postDetail', {type: getParam('type'), id: post.id})"
+          >
+            <img class="list-image"
+              ng-src="{{post.photos[0].url | cloudinary150}}"
+            >
+            <div class="detail-container absolute">
+
+              <!-- First row -->
+              <p class="zero text-overflow post-title post-text">
+                {{post.name}}
+              </p>
+
+              <!-- Second row -->
+              <div class="row zero row-likes">
+                <div class="col-20 col-heart flex">
+                    <i class="heart-icon"></i>
+                </div>
+                <div class="col-20 col-likes">
+                  <p class="zero post-text text-overflow">
+                    {{post.likes}}
+                  </p>
+                </div>
+                <div class="col-20 col-bubble flex">
+                  <i class="bubble-icon"></i>
+                </div>
+                <div class="col-20 col-commentsCount">
+                  <p class="zero post-text text-overflow">
+                    {{post.commentsCount}}
+                  </p>
+                </div>
+              </div>
+
+              <div class="row zero row-price"
+                ng-if="isParam({type: 'local'})"
+              >
+                <div class="col-auto zero">
+                  <p class="zero post-text post-category">
+                    [{{post.category | categoryToKorean}}]
+                  </p>
+                </div>
+                <div class="col zero">
+                  <p class="zero post-text post-price right text-overflow">
+                    {{post.price | number}}
+                  </p>
+                </div>
+              </div>
+
+              <div class="row zero row-price"
+                ng-if="isParam({type: 'abroad'})"
+              >
+                <div class="col zero">
+                  <p class="zero post-text post-price text-overflow">
+                    {{post.address}}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="sold-out-text-container absolute flex"
+              ng-if="post.soldOut === true"
+            >
+              <p class="zero yellow sold-out-text">
+                SoldOut
+              </p>
+            </div>
+
+          </div>
+        </div> <!-- col-list end -->
+      </div> <!-- row-list end -->
+
+      <ion-infinite-scroll
+          ng-if="PostList.checkForMore()"
+          on-infinite="PostList.getMoreProducts()"
+          distance="1%"
+          immediate-check="false"
+      >
+      </ion-infinite-scroll>
+
+  </ion-content>
+</ion-view>

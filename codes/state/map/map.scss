@@ -1,0 +1,79 @@
+#map {
+  .row-input-container {
+    .col-pin-icon {
+      .ion-ios-location-outline::before {
+        font-size: 30px;
+        color: white;
+      }
+    }
+    .col-input {
+      .input-field {
+        width: 100%;
+        height: 35px;
+        background: lighten($light-grey, 10);
+        border: 1px solid white;
+        padding: {
+          left: 10px;
+        }
+      }
+    }
+    .col-search-icon {
+      .ion-android-search::before {
+        font-size: 30px;
+        color: $yellow;
+      }
+    }
+  }
+
+  .place-product-container {
+    width: 100%;
+    background: #1d3034;
+    bottom: 0; left: 0;
+    .row-product {
+      padding: {
+        top: 10px;
+        bottom: 10px;
+      }
+      .col-product-img {
+        margin: {
+          left: 3%;
+        }
+        .product-img {
+          width: 110px;
+          height: 110px;
+        }
+      }
+      .col-desc {
+        margin: {
+          left: 3%;
+        }
+        .product-title-text {
+          color: white;
+          font-size: 16px;
+          font-weight: bold;
+        }
+        .product-location-text {
+          font-size: 14px;
+          font-weight: bold;
+        }
+        .product-seller-text {
+          font-size: 13px;
+          font-weight: bold;
+          color: $green;
+        }
+        .button-text {
+          padding: {
+            top: 8px;
+            bottom: 8px;
+          }
+          font-size: 14px;
+          color: white;
+          background: $yellow;
+          margin: {
+            top: 9px;
+          }
+        }
+      }
+    }
+  }
+}

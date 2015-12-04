@@ -1,0 +1,42 @@
+<ion-view id="message-list"
+    cache-view="true"
+    hide-back-button="false"
+>
+  <ion-nav-buttons side="left">
+      <button class="button button-icon icon ion-android-arrow-back"
+          ng-click="goBack()"
+      >
+      </button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    쪽지함
+  </ion-nav-title>
+  <ion-content class="has-header bg-light">
+    <div class="row zero row-message-list flex-v"
+      ng-repeat="message in MessageList.Model.messages"
+      ui-sref="main.messageDetail({id: message.id})"
+      ng-click="goToState('main.messageDetail', {from: message.from.id, nickname: message.from.nickname})"
+    >
+      <div class="col-30 col-nick-name">
+        <p class="zero nick-name">
+          {{message.from.nickname}}
+        </p>
+      </div>
+      <div class="col-50">
+        <p class="zero last-message-date">
+          {{message.updatedAt | date:'yyyy.MM.dd HH:mm'}}
+        </p>
+      </div>
+      <div class="col-15 col-status flex">
+        <i class="ion-email-unread"
+          ng-if="!message.read"
+        >
+        </i>
+        <span class="yellow"
+          ng-if="message.read"
+        > -
+        </span>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

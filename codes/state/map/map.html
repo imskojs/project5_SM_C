@@ -1,0 +1,58 @@
+<ion-view id="map"
+    cache-view="true"
+    hide-back-button="true"
+>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+      ng-click="goBack()"
+    >
+    </button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <div class="row zero row-main-title-logo flex">
+      <div class="col">
+        <img src="img/uhakheader.png" class="main-title-logo">
+      </div>
+    </div>
+  </ion-nav-title>
+  <ion-header-bar class="bar bar-subheader bar-light zero"
+      no-tap-scroll="true"
+  >
+    <div class="row zero height-100 flex row-input-container">
+      <div class="col-15 col-pin-icon flex">
+        <i class="pin-icon ion-ios-location-outline"></i>
+      </div>
+      <div class="col-70 col-input">
+        <input type="text" class="input-field radius" placeholder="찾으실 역 또는 지역을 입력해주세요">
+      </div>
+      <div class="col-15 col-search-icon flex">
+        <i class="search-icon ion-android-search"> </i>
+      </div>
+    </div>
+  </ion-header-bar>
+
+  <ion-content class="has-subheader">
+  </ion-content>
+  <div class="place-product-container absolute">
+    <div class="row zero row-product">
+      <div class="col-30 col-product-img">
+        <img class="product-img"
+          ng-src="{{'http://placehold.it/300x300'}}">
+      </div>
+      <div class="col-60 col-desc">
+        <p class="zero product-title-text">
+          미니벨로 브롬톤 중고자전거
+        </p>
+        <p class="zero yellow product-location-text">
+          일본 도쿄 다이토 구 이리야 역
+        </p>
+        <p class="zero product-seller-text">
+          판매자: 오진구
+        </p>
+        <p class="button-text center radius">
+          상품보러가기
+        </p>
+      </div>
+    </div>
+  </div>
+</ion-view>

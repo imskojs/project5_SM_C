@@ -1,0 +1,22 @@
+#message-list {
+  .row-message-list {
+    height: 35px;
+    border: {
+      bottom: 1px solid lighten($light, 10);
+    }
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    .col-nick-name {
+      margin: {
+        left: 5%;
+      }
+    }
+    .col-status {
+      .ion-email-unread::before {
+        font-size: 22px;
+        color: $yellow;
+      }
+    }
+  }
+}

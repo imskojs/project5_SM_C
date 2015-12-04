@@ -1,0 +1,83 @@
+#home {
+  // $col-height: 135px;
+  // $row-height: 147px;
+  $col-height: 144px;
+  $row-height: 155px;
+  .home-content {
+    background: #172724;
+  }
+
+  .row + .row {
+    margin-top: 0;
+  }
+  .bg {
+    background-size: cover;
+    background-position: center;
+  }
+  .title-text {
+    font-size: 23px;
+    line-height: 100%;
+    margin: {
+      top: 5px;
+    }
+    color: white;
+  }
+  .summary-text {
+    font-size: 12px;
+    color: $yellow;
+  }
+
+  // 학교장터
+  .row-school-market {
+    background: url('../img/main_page_schoolmarket_bg.png') no-repeat;
+    height: $row-height;
+    width: 100%;
+  } .school-market-icon {
+    content: url('../img/main_page_schoolmarket.png');
+    width: 50%;
+  }
+
+  // 유학장터
+  .row-abroad-market {
+    background: url('../img/main_page_uhakmarket_bg.png') no-repeat;
+    height: $row-height;
+    width: 100%;
+  } .abroad-market-icon {
+    content: url('../img/main_page_uhakmarket.png');
+    width: 50%;
+  }
+
+  // 잡지
+  .col-magazine {
+    background: url('../img/main_page_magazine_bg.png') no-repeat;
+    height: $col-height;
+    width: 100%;
+  } .magazine-icon {
+    content: url('../img/main_page_magazine.png');
+    width: 50%;
+  }
+  .col-contest {
+    background: url('../img/main_page_contest_bg.png') no-repeat;
+    height: $col-height;
+    width: 100%;
+  } .contest-icon {
+    content: url('../img/main_page_contest.png');
+    width: 50%;
+  }
+  .col-job {
+    background: url('../img/main_page_job_bg.png') no-repeat;
+    height: $col-height;
+    width: 100%;
+  } .job-icon {
+    content: url('../img/main_page_job.png');
+    width: 50%;
+  }
+  .col-board {
+    background: url('../img/main_page_board_bg.png') no-repeat;
+    height: $col-height;
+    width: 100%;
+  } .board-icon {
+    content: url('../img/main_page_board.png');
+    width: 50%;
+  }
+}

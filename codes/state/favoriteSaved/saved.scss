@@ -1,0 +1,81 @@
+#saved {
+  // items
+  .favorite-text {
+    margin: {
+      left: 2%;
+      top: 4px;
+      bottom: 4px;
+    }
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .row-list {
+      .col-list {
+          padding: 3px;
+          .image-ads {
+            width: 99%;
+            height: 115px;
+          }
+          .list-content {
+              width: 100%;
+              height: 100%;
+              .list-image {
+                  width: 100%;
+                  height: 100%;
+              }
+              // Details Container Absolute
+              .detail-container {
+                  background: $green-transparent;
+                  width: 100%;
+                  bottom: 0;
+                  left: 0;
+                  padding: {
+                      left: 3px;
+                      top: 3px;
+                      right: 3px;
+                  }
+                  .post-text {
+                      font-size: 12px;
+                      line-height: 16px;
+                      color: $light-grey;
+                  }
+                  .post-title {
+                      font-size: 13px;
+                      color: white;
+                  }
+                  .row-likes {
+                      justify-content: flex-end;
+                      .heart-icon {
+                        content: url('../img/icon_heart_70.png');
+                        width: 55%;
+                        margin-top: -0.5px;
+                        opacity: .7;
+                      }
+                      .bubble-icon {
+                        content: url('../img/icon_bubble_70.png');
+                        width: 55%;
+                        opacity: .7;
+                      }
+                  }
+
+                  .row-price {
+                      padding: {
+                          top: 5px;
+                          bottom: 5px;
+                      }
+                      .post-category {
+                          color: $green;
+                      }
+                      .post-price {
+                          color: $yellow;
+                          font-weight: bold;
+                      }
+                  }
+
+              }
+          }
+      }
+  }
+}

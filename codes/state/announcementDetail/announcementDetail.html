@@ -1,0 +1,54 @@
+<ion-view id="announcement-detail"
+    cache-view="true"
+    hide-back-button="false"
+>
+  <ion-nav-buttons side="left">
+      <button class="button button-icon icon ion-android-arrow-back"
+          ng-click="goBack()"
+      >
+      </button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <span ng-if="isParam({by: 'notification'})">
+      공지사항
+    </span>
+    <span ng-if="isParam({by: 'event'})">
+      이벤트
+    </span>
+  </ion-nav-title>
+
+  <ion-content class="has-header announcement-detail-content">
+    <!-- row-list -->
+    <div class="row zero row-list flex-v row-list-bg">
+      <div class="col zero col-list">
+        <p class="zero list-text">
+          학교장터 사용 유의할 점 필독바랍니다~!
+        </p>
+        <div class="row zero row-meta flex-v">
+          <p class="zero username-text yellow">
+            관리자
+          </p>
+          <p class="zero small date-text">
+            2015.08.01
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row zero row-image flex">
+      <div class="col-image col-90">
+        <img class="announcement-image"
+          ng-src="{{ 'http://placehold.it/500x180' }}"
+        >
+      </div>
+    </div>
+    <div class="row row-announcement zero flex">
+      <div class="col-90 zero">
+        <p class="zero announcement-text">
+          공지사항입니다. 이벤트도 되요 게시판입니다.
+          공지사항입니다. 이벤트도 되요 게시판입니다.
+          공지사항입니다. 이벤트도 되요 게시판입니다.
+        </p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

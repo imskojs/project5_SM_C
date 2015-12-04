@@ -1,0 +1,109 @@
+#signup {
+  .signup-content {
+    background: $stable;
+  }
+  .section-divider {
+    margin: {
+      top: 25px;
+      bottom: 20px;
+    }
+    border: 2px solid #313639;
+  }
+  // Common title
+  .row-title {
+    margin: {
+      top: 15px;
+      bottom: 10px;
+    }
+    .title {
+      font-size: 15px;
+      line-height: 15px;
+      font-weight: bold;
+    }
+  }
+
+  // Common input
+  .row-input {
+    margin: {
+      bottom: 10px;
+    }
+    .col-input {
+      border: {
+        bottom: 1px solid white;
+      }
+      .input-field {
+        width: 100%;
+        background: transparent;
+        font-size: 14px;
+        color: white;
+        &::-webkit-input-placeholder {
+          font-size: 14px;
+          line-height: 14px;
+        }
+      }
+    }
+  }
+  section.phone-input-section {
+    .col-button {
+      justify-content: flex-end;
+      .button-text {
+        color: white;
+        background: $yellow;
+        margin: {
+          top: 5px;
+        }
+        padding: {
+          top: 5px;
+          bottom: 5px;
+          left: 10px;
+          right: 10px;
+        }
+      }
+    }
+  }
+
+  section.agreement-select-section {
+    .row-select {
+      margin: {
+        top: 10px;
+        bottom: 10px;
+      }
+    }
+    .select-box {
+      width: 25px;
+      height: 25px;
+      border: 1px solid $yellow;
+      &::before {
+        color: $stable;
+        font-size: 15px;
+      }
+      &.selected {
+        background: $yellow;
+      }
+    }
+    .text {
+      font-size: 14px;
+      color: white;
+    }
+    .ion-arrow-right-b::before {
+      font-size: 18px;
+      color: $yellow;
+      margin-top: 3px;
+    }
+  }
+  .row-button {
+    margin: {
+      top: 25px;
+    }
+    .register-button {
+      background: $yellow;
+      width: 100%;
+      font-size: 15px;
+      color: white;
+      padding: {
+        top: 10px;
+        bottom: 10px;
+      }
+    }
+  }
+}

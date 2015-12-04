@@ -1,0 +1,179 @@
+<ion-view id="my-post-list"
+    cache-view="true"
+    hide-back-button="false"
+>
+
+  <ion-nav-buttons side="left">
+      <button class="button button-icon icon ion-android-arrow-back"
+          ng-click="goBack()"
+      >
+      </button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <div class="row zero row-main-title-logo flex">
+      <div class="col"
+        ng-if="isParam({type: 'local'})"
+      >
+        <img src="img/main_page_Logo.png" class="main-title-logo">
+      </div>
+      <div class="col"
+        ng-if="isParam({type: 'abroad'})"
+      >
+        <img src="img/uhakheader.png" class="main-title-logo">
+      </div>
+    </div>
+  </ion-nav-title>
+  <ion-header-bar class="bar bar-subheader bar-light zero"
+      no-tap-scroll="true"
+  >
+    <div class="row zero flex height-100">
+      <div class="col zero flex">
+        <h2 class="subheader-title center zero">
+          판매관리
+        </h2>
+      </div>
+    </div>
+  </ion-header-bar>
+
+  <ion-content class="has-subheader bg-stable">
+  <div class="row row-list zero" ng-shadow>
+    <div class="col zero col-list"
+      collection-repeat="post in MyPostList.Model.posts"
+      item-height="MyPostList.dynamicStyle(post).height"
+      item-width="MyPostList.dynamicStyle(post).width"
+    >
+      <!-- ads -->
+      <div class="list-content-ads row zero"
+        ng-if="post.isAds"
+      >
+        <div class="col zero flex">
+          <img class="image-ads"
+            ng-src="{{post.photos[0].url}}"
+          >
+        </div>
+      </div>
+
+      <!-- product -->
+      <div class="list-content relative"
+        ng-if="!post.isAds"
+      >
+        <img class="list-image"
+          ng-src="{{post.photos[0].url}}"
+        >
+        <div class="detail-container absolute">
+
+          <!-- First row -->
+          <p class="zero text-overflow post-title post-text">
+            {{post.name}}
+          </p>
+
+          <!-- Second row -->
+          <div class="row zero row-likes">
+            <div class="col-20 col-heart flex">
+                <i class="heart-icon"></i>
+            </div>
+            <div class="col-20 col-likes">
+              <p class="zero post-text text-overflow">
+                {{post.likes}}
+              </p>
+            </div>
+            <div class="col-20 col-bubble flex">
+              <i class="bubble-icon"></i>
+            </div>
+            <div class="col-20 col-commentsCount">
+              <p class="zero post-text text-overflow">
+                {{post.commentsCount}}
+              </p>
+            </div>
+          </div>
+
+          <div class="row zero row-price"
+            ng-if="isParam({type: 'local'})"
+          >
+            <div class="col zero">
+              <p class="zero post-text post-category">
+                [{{post.category | categoryToKorean}}]
+              </p>
+            </div>
+            <div class="col zero">
+              <p class="zero post-text post-price right">
+                {{post.price | number}}
+              </p>
+            </div>
+          </div>
+
+          <div class="row zero row-price"
+            ng-if="isParam({type: 'abroad'})"
+          >
+            <div class="col zero">
+              <p class="zero post-text post-price text-overflow">
+                {{post.address}}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- selected -->
+        <div class="select-box absolute radius flex"
+          ng-click="MyPostList.select(post.id)"
+          ng-class="{selected: MyPostList.Model.selectedPosts.indexOf(post.id) !== -1}"
+        >
+          <i class="ion-checkmark-round"></i>
+        </div>
+
+        <!-- SoldOut -->
+<!--         <div class="select-box absolute radius flex"
+          ng-if="MyPostList.Model.status === 'soldOut'"
+          ng-click="MyPostList.setSoldOut(post.id)"
+          ng-class="{selected: MyPostList.Model.postsToSetSoldOut.indexOf(post.id) !== -1}"
+        >
+          <i class="ion-checkmark-round"></i>
+        </div>
+ -->
+        <div class="sold-out-text-container absolute flex"
+          ng-if="post.soldOut === true"
+          ng-click="MyPostList.cancelSoldOut(post.id)"
+        >
+          <p class="zero yellow sold-out-text">
+            SoldOut
+          </p>
+        </div>
+
+        <!-- Destroy -->
+        <div class="select-box absolute radius flex"
+          ng-if="MyPostList.Model.status === 'destroy'"
+          ng-click="MyPostList.destroy(post.id)"
+          ng-class="{selected: MyPostList.Model.postsToDestroy.indexOf(post.id) !== -1}"
+        >
+          <i class="ion-checkmark-round"></i>
+        </div>
+
+      </div>
+    </div> <!-- col-list end -->
+  </div> <!-- row-list end -->
+
+  </ion-content>
+
+  <ion-footer-bar class="bar-light flex">
+    <div class="col zero col-buttons">
+
+      <p class="zero submit-button center radius"
+        ng-click="MyPostList.update()"
+      >
+        수정하기
+      </p>
+
+      <p class="zero submit-button center radius"
+        ng-click="MyPostList.setSoldOut()"
+      >
+        Sold Out
+      </p>
+
+      <p class="zero submit-button center radius"
+        ng-click="MyPostList.destroy()"
+      >
+        삭제하기
+      </p>
+    </div>
+  </ion-footer-bar>
+</ion-view>

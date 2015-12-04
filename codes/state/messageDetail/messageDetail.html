@@ -1,0 +1,64 @@
+<ion-view id="message-detail"
+    cache-view="true"
+    hide-back-button="false"
+>
+  <ion-nav-buttons side="left">
+      <button class="button button-icon icon ion-android-arrow-back"
+          ng-click="goBack()"
+      >
+      </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    쪽지함
+  </ion-nav-title>
+  <ion-header-bar class="bar bar-subheader bar-light zero"
+      no-tap-scroll="true"
+  >
+    <div class="row zero flex height-100">
+      <div class="col-90 zero flex-v col-offset-10">
+        <h2 class="subheader-title center zero yellow">
+          {{getParam('nickname')}}
+        </h2>
+      </div>
+    </div>
+  </ion-header-bar>
+
+  <ion-content class="has-subheader message-detail-content has-custom-footer">
+
+    <div class="wrapper-90">
+      <!-- message row -->
+      <div class="row zero row-message"
+        ng-repeat="message in MessageDetail.Model.messages"
+        ng-class="{'flex-right': message.from === getParam('from')}"
+      >
+        <div class="col-80 col-message radius"
+          ng-class="{'my-message': message.from !== getParam('from')}"
+        >
+          <p class="zero message-text">
+            {{message.message}}
+          </p>
+          <p class="zero date-text small right">
+            {{message.updatedAt | date: 'yyyy.MM.dd HH:mm'}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar class="bar-positive footer zero">
+    <div class="row zero flex">
+      <div class="col-70">
+        <input type="text" class="input-field" placeholder="메세지를 입력해 주세요"
+          ng-model="MessageDetail.newMessage"
+        >
+      </div>
+      <div class="col-20 col-send"
+        ng-click="MessageDetail.postMessage()"
+      >
+        <p class="zero center send-text">
+          전송
+        </p>
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>

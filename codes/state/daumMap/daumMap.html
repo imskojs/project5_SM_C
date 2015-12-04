@@ -1,0 +1,58 @@
+<ion-view id="daum-map"
+      hide-back-button="true"
+>
+  <ion-nav-buttons side="left">
+      <button class="button button-clear icon ion-android-arrow-back"
+        ui-sref="main.postList({type: 'local'})"
+      >
+      </button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <div class="row zero row-main-title-logo flex">
+      <div class="col">
+        <img src="img/main_page_Logo.png" class="main-title-logo">
+      </div>
+    </div>
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-pinpoint"
+      ng-click="Map.findMeThenSearchNearBy()"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-header-bar class="bar-subheader zero flex">
+    <div class="r1 row row-search flex zero">
+      <div class="c2 col-80 zero">
+        <input id="daum-map-search-input" type="text"
+          placeholder="찾으실 역 또는 지역을 입력해주세요"
+          ng-model="Map.search"
+          ng-enter="Map.searchLocationNearBy(Map.search);"
+        >
+      </div>
+      <div class="c3 col-10 flex"
+        ng-click="Map.searchLocationNearBy(Map.search);"
+      >
+        <i class="ion-search"></i>
+      </div>
+    </div>
+  </ion-header-bar>
+
+  <ion-content class="has-subheader"
+    data-tap-disable="true"
+    scroll="false"
+  >
+    <div class="r2 row row-daum-map zero">
+      <div class="c1 col zero">
+        <div daum-map
+          marker-src="img/map_iconunselect.png"
+          marker-clicked-src="img/map_iconselect.png"
+          marker-width="35"
+          marker-height="35"
+        >
+        </div>
+      </div>
+    </div>
+  </ion-content>
+
+</ion-view>
