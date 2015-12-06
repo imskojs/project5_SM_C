@@ -3,9 +3,9 @@
   angular.module('app')
     .controller('PostListController', PostListController);
 
-  PostListController.$inject = ['Products', 'PostListModel', '$scope', '$timeout', 'Message', 'LinkService', '$stateParams', '$ionicScrollDelegate', '_'];
+  PostListController.$inject = ['Products', 'PostListModel', '$scope', '$timeout', 'Message', 'LinkService', '$stateParams', '$ionicScrollDelegate'];
 
-  function PostListController(Products, PostListModel, $scope, $timeout, Message, LinkService, $stateParams, $ionicScrollDelegate, _) {
+  function PostListController(Products, PostListModel, $scope, $timeout, Message, LinkService, $stateParams, $ionicScrollDelegate) {
 
     // add ads on every end of multiples of adsOnRow
     // var adsOnRow = 2;
@@ -80,6 +80,7 @@
       }).$promise
         .then(function success(productsWrapper) {
           console.log(productsWrapper);
+
           // var results = [];
           // angular.forEach(productsWrapper.products, function(product) {
           //   if (product.soldOut === false) {
@@ -87,9 +88,10 @@
           //   }
           // });
           // PostListModel.posts = results;
+
           PostListModel.posts = productsWrapper.products;
           PostListModel.more = productsWrapper.more;
-          // addAdsToPosts(2, false);
+          addAdsToPosts(2, false);
           $ionicScrollDelegate.resize();
         })
         .catch(function error(err) {
@@ -143,21 +145,25 @@
     //====================================================
     //  Helper
     //====================================================
-    function addAdsToPosts(adsOnRow, upfront) {
-      var index = null;
-      if (upfront) {
-        index = 0;
-      } else {
-        index = adsOnRow * 3;
-      }
-      var posts = PostListModel.posts;
-      var ads = PostListModel.ads;
-      $timeout(function() {
-        for (var i = 0; i < ads.length; i++) {
-          posts.splice(index, 0, ads[i]);
-          index = index + adsOnRow * 3 + 1;
-        }
-      }, 0);
+    // function addAdsToPosts(adsOnRow, upfront) {
+    //   var index = null;
+    //   if (upfront) {
+    //     index = 0;
+    //   } else {
+    //     index = adsOnRow * 3;
+    //   }
+    //   var posts = PostListModel.posts;
+    //   var ads = PostListModel.ads;
+    //   $timeout(function() {
+    //     for (var i = 0; i < ads.length; i++) {
+    //       posts.splice(index, 0, ads[i]);
+    //       index = index + adsOnRow * 3 + 1;
+    //     }
+    //   }, 0);
+    // }
+
+    function addAdsToPosts(adsOnRow) {
+
     }
 
   } // END;

@@ -10324,6 +10324,15 @@ tags-input .autocomplete .suggestion-item em {
 .request-account-termination-content {
   background-color: rgba(250, 250, 250, 0.7); }
 
+#announcement .col-subheader {
+  height: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  color: #cfd4d5; }
+  #announcement .col-subheader.selected {
+    color: white;
+    border-bottom: 4px solid #eaad39; }
+
 #announcement-detail .announcement-detail-content {
   background: #1d3034; }
 
@@ -10359,15 +10368,6 @@ tags-input .autocomplete .suggestion-item em {
   #announcement-detail .row-announcement .announcement-text {
     color: white;
     font-size: 14px; }
-
-#announcement .col-subheader {
-  height: 100%;
-  font-size: 20px;
-  font-weight: bold;
-  color: #cfd4d5; }
-  #announcement .col-subheader.selected {
-    color: white;
-    border-bottom: 4px solid #eaad39; }
 
 #announcement-list .announcement-list-content {
   background: #1d3034; }
@@ -10414,15 +10414,6 @@ tags-input .autocomplete .suggestion-item em {
     font-size: 16px;
     line-height: 120%;
     letter-spacing: -0.5px; }
-
-#favorite .col-subheader {
-  height: 100%;
-  font-size: 20px;
-  font-weight: bold;
-  color: #cfd4d5; }
-  #favorite .col-subheader.selected {
-    color: white;
-    border-bottom: 4px solid #eaad39; }
 
 #daum-map .row + .row {
   margin-top: 0; }
@@ -10534,6 +10525,15 @@ tags-input .autocomplete .suggestion-item em {
               color: #03232a;
               font-size: 3.5vw;
               line-height: 120%; }
+
+#favorite .col-subheader {
+  height: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  color: #cfd4d5; }
+  #favorite .col-subheader.selected {
+    color: white;
+    border-bottom: 4px solid #eaad39; }
 
 #saved .favorite-text {
   margin-left: 2%;
@@ -10732,49 +10732,6 @@ tags-input .autocomplete .suggestion-item em {
   content: url("../img/login_Facebook.png");
   width: 100%; }
 
-#message-detail .message-detail-content {
-  background: #1d3034; }
-
-#message-detail .row-message {
-  margin-top: 10px; }
-
-#message-detail .col-message {
-  color: #cfd4d5;
-  background: #485452;
-  padding: 5px; }
-  #message-detail .col-message .message-text {
-    color: #cfd4d5;
-    font-size: 16px; }
-  #message-detail .col-message .date-text {
-    margin-top: 10px; }
-
-#message-detail .footer {
-  background: #38474f;
-  height: 44px; }
-  #message-detail .footer .input-field {
-    width: 100%;
-    height: 35px;
-    margin: 0;
-    padding: 0;
-    padding-left: 10px; }
-  #message-detail .footer .col-send {
-    margin-left: 2%; }
-  #message-detail .footer .send-text {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    font-size: 15px;
-    line-height: 100%;
-    background: #11292e; }
-
-#message-detail .has-custom-footer {
-  bottom: 44px; }
-
-#message-detail .my-message {
-  background: #3d5a60; }
-
-#message-detail .flex-right {
-  justify-content: flex-end; }
-
 #map .row-input-container .col-pin-icon .ion-ios-location-outline::before {
   font-size: 30px;
   color: white; }
@@ -10824,17 +10781,48 @@ tags-input .autocomplete .suggestion-item em {
         background: #eaad39;
         margin-top: 9px; }
 
-#message-list .row-message-list {
-  height: 35px;
-  border-bottom: 1px solid #4d626d;
-  font-size: 15px;
-  font-weight: bold;
-  color: white; }
-  #message-list .row-message-list .col-nick-name {
-    margin-left: 5%; }
-  #message-list .row-message-list .col-status .ion-email-unread::before {
-    font-size: 22px;
-    color: #eaad39; }
+#message-detail .message-detail-content {
+  background: #1d3034; }
+
+#message-detail .row-message {
+  margin-top: 10px; }
+
+#message-detail .col-message {
+  color: #cfd4d5;
+  background: #485452;
+  padding: 5px; }
+  #message-detail .col-message .message-text {
+    color: #cfd4d5;
+    font-size: 16px; }
+  #message-detail .col-message .date-text {
+    margin-top: 10px; }
+
+#message-detail .footer {
+  background: #38474f;
+  height: 44px; }
+  #message-detail .footer .input-field {
+    width: 100%;
+    height: 35px;
+    margin: 0;
+    padding: 0;
+    padding-left: 10px; }
+  #message-detail .footer .col-send {
+    margin-left: 2%; }
+  #message-detail .footer .send-text {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    line-height: 100%;
+    background: #11292e; }
+
+#message-detail .has-custom-footer {
+  bottom: 44px; }
+
+#message-detail .my-message {
+  background: #3d5a60; }
+
+#message-detail .flex-right {
+  justify-content: flex-end; }
 
 .common-modal {
   background: transparent; }
@@ -10911,6 +10899,18 @@ tags-input .autocomplete .suggestion-item em {
       #send-message-modal .row-input .col-input .input-field::-webkit-input-placeholder {
         font-size: 14px;
         line-height: 14px; }
+
+#message-list .row-message-list {
+  height: 35px;
+  border-bottom: 1px solid #4d626d;
+  font-size: 15px;
+  font-weight: bold;
+  color: white; }
+  #message-list .row-message-list .col-nick-name {
+    margin-left: 5%; }
+  #message-list .row-message-list .col-status .ion-email-unread::before {
+    font-size: 22px;
+    color: #eaad39; }
 
 #my-post-list .subheader-title {
   color: white;
@@ -10998,109 +10998,6 @@ tags-input .autocomplete .suggestion-item em {
   #my-post-list .sold-out-text-container .sold-out-text {
     font-size: 18px;
     border-bottom: 1px solid #eaad39; }
-
-#post-list .post-list-content {
-  padding-top: 5px;
-  padding-left: 1%;
-  background: #11292e; }
-
-#post-list .sold-out-text-container {
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0.6); }
-  #post-list .sold-out-text-container .sold-out-text {
-    font-size: 18px;
-    border-bottom: 1px solid #eaad39; }
-
-#post-list .bar-input .row-input {
-  height: 80%;
-  width: 90%; }
-  #post-list .bar-input .row-input .col-input {
-    height: 100%; }
-    #post-list .bar-input .row-input .col-input input {
-      height: 100%;
-      width: 100%;
-      line-height: 18px;
-      font-size: 18px;
-      padding: 0;
-        padding-left: 8px; }
-    #post-list .bar-input .row-input .col-input ::-webkit-input-placeholder {
-      line-height: 12px;
-      font-size: 12px;
-      padding-top: 6px;
-      text-align: center;
-      color: #cfd4d5; }
-  #post-list .bar-input .row-input .col-search {
-    background: white;
-    height: 100%; }
-    #post-list .bar-input .row-input .col-search .ion-ios-search-strong::before {
-      font-size: 20px !important;
-      color: #eaad39; }
-
-#post-list .look-map {
-  height: 86px;
-  margin-bottom: 10px;
-  background: url("../img/mapmenu.png") no-repeat;
-  background-size: contain;
-  background-position: center;
-  width: 97%; }
-  #post-list .look-map .ion-android-map::before {
-    color: white;
-    font-size: 30px; }
-  #post-list .look-map .col-map-text {
-    margin-left: 3%; }
-  #post-list .look-map .map-text {
-    color: white;
-    font-size: 20px;
-    font-weight: bold; }
-
-#post-list .row-list .col-list {
-  padding: 3px; }
-  #post-list .row-list .col-list .image-ads {
-    width: 99%;
-    height: 115px; }
-  #post-list .row-list .col-list .list-content {
-    width: 100%;
-    height: 100%; }
-    #post-list .row-list .col-list .list-content .list-image {
-      width: 100%;
-      height: 100%; }
-    #post-list .row-list .col-list .list-content .detail-container {
-      background: rgba(4, 79, 78, 0.75);
-      width: 100%;
-      bottom: 0;
-      left: 0;
-      padding-left: 3px;
-      padding-top: 3px;
-      padding-right: 3px; }
-      #post-list .row-list .col-list .list-content .detail-container .post-text {
-        font-size: 12px;
-        line-height: 16px;
-        color: #cfd4d5; }
-      #post-list .row-list .col-list .list-content .detail-container .post-title {
-        font-size: 13px;
-        color: white; }
-      #post-list .row-list .col-list .list-content .detail-container .row-likes {
-        justify-content: flex-end; }
-        #post-list .row-list .col-list .list-content .detail-container .row-likes .heart-icon {
-          content: url("../img/icon_heart_70.png");
-          width: 55%;
-          margin-top: -0.5px;
-          opacity: .7; }
-        #post-list .row-list .col-list .list-content .detail-container .row-likes .bubble-icon {
-          content: url("../img/icon_bubble_70.png");
-          width: 55%;
-          opacity: .7; }
-      #post-list .row-list .col-list .list-content .detail-container .row-price {
-        padding-top: 5px;
-        padding-bottom: 5px; }
-        #post-list .row-list .col-list .list-content .detail-container .row-price .post-category {
-          color: #37c7b8; }
-        #post-list .row-list .col-list .list-content .detail-container .row-price .post-price {
-          color: #eaad39;
-          font-weight: bold; }
 
 #post-detail .post-detail-content {
   background: #11292e;
@@ -11300,75 +11197,108 @@ tags-input .autocomplete .suggestion-item em {
   width: 100vw;
   height: 100vh; }
 
-#profile .row-input {
-  margin-bottom: 15px; }
-  #profile .row-input .col-input {
-    border-bottom: 1px solid white; }
-    #profile .row-input .col-input .input-field {
-      width: 100%;
-      background: transparent;
-      font-size: 14px;
-      color: white; }
-      #profile .row-input .col-input .input-field::-webkit-input-placeholder {
-        font-size: 14px;
-        line-height: 14px; }
-
-#profile .row-button {
-  margin-top: 25px; }
-  #profile .row-button .submit-button {
-    background: #eaad39;
-    width: 100%;
-    font-size: 15px;
-    color: white;
-    padding-top: 10px;
-    padding-bottom: 10px; }
-
-#profile .subheader-title {
-  color: white;
-  font-size: 18px;
-  font-weight: bold; }
-
-#profile .title {
-  font-size: 15px;
-  line-height: 15px;
-  font-weight: bold; }
-
-#profile section.profile-photo-section {
-  margin-top: 15px; }
-
-#profile .row-photo .col-photo .circle {
-  width: 70px;
-  height: 70px; }
-
-#profile .row-photo .col-photo .profile-image {
-  border-radius: 100%;
-  width: 68px;
-  height: 68px; }
-
-#profile .row-photo .col-photo-restrict-text .restrict-text {
-  line-height: 120%;
-  color: #cfd4d5;
-  letter-spacing: -1px; }
-
-#profile .row-photo .button-text {
-  background: #eaad39;
+#post-list .post-list-content {
   padding-top: 5px;
-  padding-bottom: 5px;
-  color: white;
-  font-size: 15px;
-  line-height: 120%; }
-  #profile .row-photo .button-text.top-button {
-    margin-bottom: 14px; }
+  padding-left: 1%;
+  background: #11292e; }
 
-#profile .row-button {
-  margin-top: 25px; }
-  #profile .row-button .submit-button {
-    background: #eaad39;
-    width: 100%;
-    font-size: 15px;
+#post-list .sold-out-text-container {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6); }
+  #post-list .sold-out-text-container .sold-out-text {
+    font-size: 18px;
+    border-bottom: 1px solid #eaad39; }
+
+#post-list .bar-input .row-input {
+  height: 80%;
+  width: 90%; }
+  #post-list .bar-input .row-input .col-input {
+    height: 100%; }
+    #post-list .bar-input .row-input .col-input input {
+      height: 100%;
+      width: 100%;
+      line-height: 18px;
+      font-size: 18px;
+      padding: 0;
+        padding-left: 8px; }
+    #post-list .bar-input .row-input .col-input ::-webkit-input-placeholder {
+      line-height: 12px;
+      font-size: 12px;
+      padding-top: 6px;
+      text-align: center;
+      color: #cfd4d5; }
+  #post-list .bar-input .row-input .col-search {
+    background: white;
+    height: 100%; }
+    #post-list .bar-input .row-input .col-search .ion-ios-search-strong::before {
+      font-size: 20px !important;
+      color: #eaad39; }
+
+#post-list .look-map {
+  height: 86px;
+  margin-bottom: 10px;
+  background: url("../img/mapmenu.png") no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 97%; }
+  #post-list .look-map .ion-android-map::before {
     color: white;
-    padding-top: 10px;
-    padding-bottom: 10px; }
+    font-size: 30px; }
+  #post-list .look-map .col-map-text {
+    margin-left: 3%; }
+  #post-list .look-map .map-text {
+    color: white;
+    font-size: 20px;
+    font-weight: bold; }
+
+#post-list .row-list .col-list {
+  padding: 3px; }
+  #post-list .row-list .col-list .image-ads {
+    width: 99%;
+    height: 115px; }
+  #post-list .row-list .col-list .list-content {
+    width: 100%;
+    height: 100%; }
+    #post-list .row-list .col-list .list-content .list-image {
+      width: 100%;
+      height: 100%; }
+    #post-list .row-list .col-list .list-content .detail-container {
+      background: rgba(4, 79, 78, 0.75);
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      padding-left: 3px;
+      padding-top: 3px;
+      padding-right: 3px; }
+      #post-list .row-list .col-list .list-content .detail-container .post-text {
+        font-size: 12px;
+        line-height: 16px;
+        color: #cfd4d5; }
+      #post-list .row-list .col-list .list-content .detail-container .post-title {
+        font-size: 13px;
+        color: white; }
+      #post-list .row-list .col-list .list-content .detail-container .row-likes {
+        justify-content: flex-end; }
+        #post-list .row-list .col-list .list-content .detail-container .row-likes .heart-icon {
+          content: url("../img/icon_heart_70.png");
+          width: 55%;
+          margin-top: -0.5px;
+          opacity: .7; }
+        #post-list .row-list .col-list .list-content .detail-container .row-likes .bubble-icon {
+          content: url("../img/icon_bubble_70.png");
+          width: 55%;
+          opacity: .7; }
+      #post-list .row-list .col-list .list-content .detail-container .row-price {
+        padding-top: 5px;
+        padding-bottom: 5px; }
+        #post-list .row-list .col-list .list-content .detail-container .row-price .post-category {
+          color: #37c7b8; }
+        #post-list .row-list .col-list .list-content .detail-container .row-price .post-price {
+          color: #eaad39;
+          font-weight: bold; }
 
 #post-register .title {
   font-size: 15px;
@@ -11502,6 +11432,76 @@ tags-input .autocomplete .suggestion-item em {
 
 #post-register .address-title-text {
   color: white; }
+
+#profile .row-input {
+  margin-bottom: 15px; }
+  #profile .row-input .col-input {
+    border-bottom: 1px solid white; }
+    #profile .row-input .col-input .input-field {
+      width: 100%;
+      background: transparent;
+      font-size: 14px;
+      color: white; }
+      #profile .row-input .col-input .input-field::-webkit-input-placeholder {
+        font-size: 14px;
+        line-height: 14px; }
+
+#profile .row-button {
+  margin-top: 25px; }
+  #profile .row-button .submit-button {
+    background: #eaad39;
+    width: 100%;
+    font-size: 15px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px; }
+
+#profile .subheader-title {
+  color: white;
+  font-size: 18px;
+  font-weight: bold; }
+
+#profile .title {
+  font-size: 15px;
+  line-height: 15px;
+  font-weight: bold; }
+
+#profile section.profile-photo-section {
+  margin-top: 15px; }
+
+#profile .row-photo .col-photo .circle {
+  width: 70px;
+  height: 70px; }
+
+#profile .row-photo .col-photo .profile-image {
+  border-radius: 100%;
+  width: 68px;
+  height: 68px; }
+
+#profile .row-photo .col-photo-restrict-text .restrict-text {
+  line-height: 120%;
+  color: #cfd4d5;
+  letter-spacing: -1px; }
+
+#profile .row-photo .button-text {
+  background: #eaad39;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: white;
+  font-size: 15px;
+  line-height: 120%; }
+  #profile .row-photo .button-text.top-button {
+    margin-bottom: 14px; }
+
+#profile .row-button {
+  margin-top: 25px; }
+  #profile .row-button .submit-button {
+    background: #eaad39;
+    width: 100%;
+    font-size: 15px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px; }
 
 #signup .signup-content {
   background: #11292e; }
