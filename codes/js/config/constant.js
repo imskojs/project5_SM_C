@@ -37,7 +37,7 @@
   // .constant("governorUrl", "http://192.168.0.13:1337")
   .constant("appName", "schoolMarket")
     .constant("appId", 3)
-    .constant("googlePushSenderID", "350504486209")
+    .constant("googlePushSenderID", "80216654611")
     .constant("kakaoKey", "bdb254de02ea0b7521635ba469608674")
     .constant("facebookKey", "442354165953949");
 

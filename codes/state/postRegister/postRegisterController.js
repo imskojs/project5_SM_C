@@ -3,10 +3,16 @@
   angular.module('app')
     .controller('PostRegisterController', PostRegisterController);
 
-  PostRegisterController.$inject = ['PostRegisterModel', 'MainModel', '$stateParams', 'Message', 'ImageService', 'Products', 'daum', '$ionicScrollDelegate', '$timeout', '$scope', '$state', 'appStorage', 'Schools', '_', '$q'];
+  PostRegisterController.$inject = [
+    '$stateParams', '$ionicScrollDelegate', '$timeout', '$scope', '$state', '$q',
+    'PostRegisterModel', 'MainModel', 'Message', 'ImageService', 'Products', 'daum',
+    'appStorage', 'Schools', '_'
+  ];
 
-  function PostRegisterController(PostRegisterModel, MainModel, $stateParams, Message, ImageService, Products, daum, $ionicScrollDelegate, $timeout, $scope, $state, appStorage,
-    Schools, _, $q
+  function PostRegisterController(
+    $stateParams, $ionicScrollDelegate, $timeout, $scope, $state, $q,
+    PostRegisterModel, MainModel, Message, ImageService, Products, daum,
+    appStorage, Schools, _
   ) {
 
     var PostRegister = this;

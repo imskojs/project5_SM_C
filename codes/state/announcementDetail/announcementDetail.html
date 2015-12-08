@@ -22,14 +22,15 @@
     <div class="row zero row-list flex-v row-list-bg">
       <div class="col zero col-list">
         <p class="zero list-text">
-          학교장터 사용 유의할 점 필독바랍니다~!
+        {{ AnnouncementDetail.Model.post.title }}
         </p>
         <div class="row zero row-meta flex-v">
+            <!-- {{ AnnouncementDetail.Model.post.nickname }} -->
           <p class="zero username-text yellow">
             관리자
           </p>
           <p class="zero small date-text">
-            2015.08.01
+          {{ AnnouncementDetail.Model.post.createdAt | date: 'yyyy.MM.dd' }}
           </p>
         </div>
       </div>
@@ -37,16 +38,14 @@
     <div class="row zero row-image flex">
       <div class="col-image col-90">
         <img class="announcement-image"
-          ng-src="{{ 'http://placehold.it/500x180' }}"
+          ng-src="{{ AnnouncementDetail.Model.post.photos[0].url | cloudinary600 }}"
         >
       </div>
     </div>
     <div class="row row-announcement zero flex">
       <div class="col-90 zero">
         <p class="zero announcement-text">
-          공지사항입니다. 이벤트도 되요 게시판입니다.
-          공지사항입니다. 이벤트도 되요 게시판입니다.
-          공지사항입니다. 이벤트도 되요 게시판입니다.
+          {{AnnouncementDetail.Model.post.content}}
         </p>
       </div>
     </div>

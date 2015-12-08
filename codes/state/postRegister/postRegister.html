@@ -215,7 +215,8 @@
       </p>
       <div class="row zero row-input">
         <div class="col zero col-input">
-          <input type="text" class="input-field" placeholder="국가 / 지역 / 역(건물) 주변까지 검색하여 입력"
+          <input type="text" class="input-field"
+            placeholder="국가 / 지역 / 역(건물) 주변까지 검색하여 입력"
             ng-model="PostRegister.Model.form.address"
             ng-enter="isParam({type: 'local'}) ? PostRegister.searchPlace() : null"
           >

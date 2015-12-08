@@ -1,7 +1,8 @@
 (function() {
   'use strict';
   angular.module('app')
-    .filter('cloudinary150', cloudinaryFilter.bind(null, 150));
+    .filter('cloudinary150', cloudinaryFilter.bind(null, 150))
+    .filter('cloudinary600', cloudinaryFilter.bind(null, 600));
 
   function cloudinaryFilter(size) {
     var matching = /upload/;

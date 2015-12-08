@@ -44,8 +44,12 @@
     //LinkService.openLink('http://www.applicat.co.kr');
     // Output
     //InAppBrowser open new window with url
-    function open(link) {
-      return $window.open(link, '_system');
+    function open(link, type) {
+      if (type === '_system') {
+        return $window.open(link, '_system');
+      } else {
+        return $window.open(link, '_blank', 'location=no');
+      }
     }
 
     //====================================================

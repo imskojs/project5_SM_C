@@ -4,6 +4,7 @@
 
   angular.module('app', [
     'ionic',
+    'applicat.push.service',
     'ngCordova',
     'ngResource',
     'ngTemplates',
@@ -14,9 +15,15 @@
 
   .run([
 
-    '$ionicPlatform', '$rootScope', '$stateParams', '$state', 'AuthService', '$window', '$ionicHistory', '$ionicSideMenuDelegate', 'Message', '$timeout', 'appStorage', '$ionicModal',
+    '$ionicPlatform', '$rootScope', '$stateParams', '$state',
+    '$window', '$ionicHistory', '$ionicSideMenuDelegate', '$timeout', '$ionicModal',
+    'AuthService', 'Message', 'appStorage', 'PushService',
 
-    function($ionicPlatform, $rootScope, $stateParams, $state, AuthService, $window, $ionicHistory, $ionicSideMenuDelegate, Message, $timeout, appStorage, $ionicModal) {
+    function(
+      $ionicPlatform, $rootScope, $stateParams, $state,
+      $window, $ionicHistory, $ionicSideMenuDelegate, $timeout, $ionicModal,
+      AuthService, Message, appStorage, PushService
+    ) {
 
       $rootScope.isState = isState;
       $rootScope.areStates = areStates;
@@ -123,6 +130,9 @@
         }
         if ($window.StatusBar) {
           $window.StatusBar.styleDefault();
+        }
+        if ($window.cordova) {
+          PushService.registerDevice();
         }
         $ionicPlatform.registerBackButtonAction(function(e) {
           e.preventDefault();
