@@ -4,6 +4,7 @@
 
   angular.module('app', [
     'ionic',
+    'ion-google-place',
     'applicat.push.service',
     'ngCordova',
     'ngResource',
@@ -41,7 +42,6 @@
       $rootScope.mainType = null;
 
       $ionicPlatform.ready(onReady);
-
       //====================================================
       //  IMPLEMENTATIONS
       //====================================================
@@ -124,6 +124,7 @@
       }
 
       function onReady() {
+
         if ($window.cordova && $window.cordova.plugins.Keyboard) {
           $window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
           $state.go('main.home');
@@ -134,6 +135,7 @@
         if ($window.cordova) {
           PushService.registerDevice();
         }
+
         $ionicPlatform.registerBackButtonAction(function(e) {
           e.preventDefault();
           if (areStates(['main.home'])) {
@@ -169,7 +171,7 @@
       }
 
 
-      $state.go('main.home');
+      // $state.go('main.home');
 
     }
   ])
@@ -184,7 +186,7 @@
 
       $stateProvider
 
-      .state('main', {
+        .state('main', {
         url: '/main',
         templateUrl: 'state/0main/main.html',
         controller: 'MainController as Main'
@@ -196,6 +198,16 @@
           main: {
             templateUrl: 'state/daumMap/daumMap.html',
             controller: 'DaumMapController as Map'
+          }
+        }
+      })
+
+      .state('main.googleMap', {
+        url: '/googleMap/:id',
+        views: {
+          main: {
+            templateUrl: 'state/googleMap/googleMap.html',
+            controller: 'GoogleMapController as GoogleMap'
           }
         }
       })
@@ -231,14 +243,14 @@
       })
 
       .state('main.favorite', {
-        url: '/favorite',
-        views: {
-          main: {
-            templateUrl: 'state/favorite/favorite.html',
-            controller: 'FavoriteController as Favorite'
+          url: '/favorite',
+          views: {
+            main: {
+              templateUrl: 'state/favorite/favorite.html',
+              controller: 'FavoriteController as Favorite'
+            }
           }
-        }
-      })
+        })
         .state('main.favorite.saved', {
           url: '/saved/:type/:by',
           views: {
@@ -320,15 +332,15 @@
       })
 
       .state('main.boardList', {
-        abstract: true,
-        url: '/boardList',
-        views: {
-          main: {
-            templateUrl: 'state/boardList/boardList.html',
-            controller: 'BoardListController as BoardList'
+          abstract: true,
+          url: '/boardList',
+          views: {
+            main: {
+              templateUrl: 'state/boardList/boardList.html',
+              controller: 'BoardListController as BoardList'
+            }
           }
-        }
-      })
+        })
         .state('main.boardList.category', {
           url: '/category/:by',
           views: {
@@ -340,15 +352,15 @@
         })
 
       .state('main.announcement', {
-        abstract: true,
-        url: '/announcement',
-        views: {
-          main: {
-            templateUrl: 'state/announcement/announcement.html',
-            controller: 'AnnouncementController as Announcement'
+          abstract: true,
+          url: '/announcement',
+          views: {
+            main: {
+              templateUrl: 'state/announcement/announcement.html',
+              controller: 'AnnouncementController as Announcement'
+            }
           }
-        }
-      })
+        })
         .state('main.announcement.list', {
           url: '/list/:by',
           views: {
@@ -379,11 +391,12 @@
         }
       })
 
-      .state('main.googleMap', {
-        url: '/googleMap/:id',
+      .state('main.test', {
+        url: 'test/:id',
         views: {
           main: {
-            templateUrl: 'state/googleMap/googleMap.html',
+            templateUrl: 'state/test/test.html',
+            controller: 'TestController as Test'
           }
         }
       });

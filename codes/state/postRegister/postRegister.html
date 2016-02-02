@@ -184,7 +184,7 @@
             placeholder="학교를 선택하세요"
           >
             <auto-complete source="PostRegister.getSchools()"
-              max-results-to-show="5"
+              max-results-to-show="10"
               min-length="1"
               filter-results="true"
             ></auto-complete>
@@ -209,7 +209,9 @@
       </div>
     </section>
 
-    <section class="school-section input-section wrapper-90">
+    <section class="school-section input-section wrapper-90"
+      ng-if="isParam({type: 'local'})"
+    >
       <p class="yellow title zero">
         팔고싶은 장소 지정
       </p>
@@ -246,6 +248,48 @@
       </div>
     </section>
 
+    <!-- 유학장터 팔고싶은 장소 지정 -->
+    <section class="school-section input-section wrapper-90"
+      ng-if="isParam({type: 'abroad'})"
+    >
+      <p class="yellow title zero">
+        팔고싶은 장소 지정 (유학)
+      </p>
+      <div class="row zero row-input">
+        <div class="col zero col-input">
+          <input type="text" class="input-field"
+            placeholder="국가 / 지역 / 역(건물) 주변까지 검색하여 입력"
+            ng-model="PostRegister.searchWord"
+            ng-enter="PostRegister.findPlaces(PostRegister.searchWord)"
+          >
+        </div>
+        <div class="col-10 col-icon flex"
+          ng-click="PostRegister.findPlaces(PostRegister.searchWord);"
+        >
+          <i class="ion-android-search"></i>
+        </div>
+      </div>
+      <p class="zero address-title-text"
+        ng-if="PostRegister.Model.places.length > 0"
+      >
+        장소를 골라주세요
+      </p>
+      <div class="row zero row-places"
+        style="margin-top: 5px"
+        ng-if="PostRegister.Model.places.length > 0"
+        ng-repeat="place in PostRegister.Model.places"
+        ng-click="PostRegister.selectAbroadPlace(place);"
+      >
+        <div class="col zero col-address flex">
+          <p class="zero address-text">
+            {{place.formatted_address}}
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+
     <section class="school-section input-section wrapper-90">
       <p class="yellow title zero">
         전화번보 공개
@@ -276,6 +320,7 @@
     </section>
     <hr class="section-divider">
 
+
     <div class="row wrapper-90 flex row-button">
       <p class="zero submit-button center radius"
         ng-if="isParam({method: 'create'})"
@@ -290,5 +335,9 @@
         수정하기
       </p>
     </div>
+    <div
+      place-search
+      vm="PostRegister"
+    ></div>
   </ion-content>
 </ion-view>

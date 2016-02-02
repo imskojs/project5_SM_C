@@ -50,6 +50,10 @@
         // Save data(base64)
         $timeout(function() {
           params.dataUris.push(dataUri);
+          console.log("---------- params.dataUris ----------");
+          console.log(params.dataUris);
+          console.log("HAS TYPE: " + typeof params.dataUris);
+
         }, 0);
       })
 
@@ -114,6 +118,10 @@
       angular.forEach(dataUris, function(base64Data) {
         filesToSend.push(base64ToFile(base64Data));
       });
+      console.log("---------- filesToSend ----------");
+      console.log(filesToSend);
+      console.log("HAS TYPE: " + typeof filesToSend);
+
 
       var promise = Upload.upload({
         url: governorUrl + url,

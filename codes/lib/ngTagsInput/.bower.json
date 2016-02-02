@@ -1,0 +1,14 @@
+{
+  "name": "ngTagsInput",
+  "homepage": "https://github.com/imskojs/ngTagsInput",
+  "_release": "95d97e786c",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "95d97e786c7df7dcb60df5a7d1bb71194a5c75cd"
+  },
+  "_source": "https://github.com/imskojs/ngTagsInput.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/imskojs/ngTagsInput.git",
+  "_direct": true
+}

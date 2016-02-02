@@ -1,0 +1,60 @@
+<ion-view id="test"
+  cache-view="true"
+>
+
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+      ng-click="goToState('main.home')"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <div class="row zero h44px">
+      <div class="col flex zero">
+        <p class="zero">GoogleMap</p>
+      </div>
+    </div>
+  </ion-nav-title>
+
+  <ion-nav-buttons side="right">
+    <button class="button button-icon icon ion-pinpoint"
+      ng-click="Test.setCenterByCurrentPosition()"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-header-bar class="bar-subheader zero flex">
+    <div class="r1 row row-search flex zero">
+      <div class="c2 col-80 zero">
+        <input id="daum-map-search-input" type="text"
+          placeholder="찾으실 역 또는 지역을 입력해주세요"
+          ng-model="Test.search"
+          ng-enter="Test.setCenterByAddress(Test.search);"
+        >
+      </div>
+      <div class="c3 col-10 flex"
+        ng-click="Test.setCenterByAddress(Test.search)"
+      >
+        <i class="ion-search"></i>
+      </div>
+    </div>
+  </ion-header-bar>
+
+<ion-content class="has-subheader"
+  data-tap-disable="true"
+  scroll="false"
+>
+  <div google-map
+    icon="img/map_iconunselect.png"
+    active-icon="img/map_iconselect.png"
+    center-marker="true"
+    idle-event="true"
+    vm="Test"
+    places="Test.Model.products"
+  >
+
+  </div>
+</ion-content>
+
+</ion-view>

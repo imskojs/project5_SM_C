@@ -64,6 +64,23 @@
         </div>
       </div>
 
+      <!-- abroad map -->
+      <div class="row zero bg-stable look-map flex auto radius"
+        ng-click="goToState('main.googleMap')"
+        ng-if="isParam({type: 'abroad'})"
+      >
+        <div class="col-image">
+          <i class="ion-android-map">
+          </i>
+        </div>
+        <div class="col-map-text"
+        >
+          <p class="zero map-text">
+            지도에서 상품보기
+          </p>
+        </div>
+      </div>
+
       <div class="row row-list zero" ng-shadow>
         <div class="col zero col-list"
           collection-repeat="post in PostList.Model.posts"

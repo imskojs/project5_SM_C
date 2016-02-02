@@ -46,6 +46,10 @@
         }, 'PUT')
           .then(function profileUpdateSuccess(dataWrapper) {
             var user = dataWrapper.data;
+            console.log("---------- user ----------");
+            console.log(user);
+            console.log("HAS TYPE: " + typeof user);
+
             setAppStorageValues(user);
             return Message.alert('프로필 업데이트 알림', '업데이트가 성공적으로 되었습니다');
           })

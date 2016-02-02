@@ -107,20 +107,34 @@
 
     function getProducts() {
       searchMode = false;
+      var adsPromise;
       var productsPromise = Products.getProducts({
         category: $stateParams.category,
         type: $stateParams.type,
         sort: 'id DESC',
         soldOut: false,
         limit: 12,
-        populates: 'photos',
-      }).$promise;
-      var adsPromise = Products.getProducts({
-        category: 'ads',
-        isAds: true,
-        limit: 10,
         populates: 'photos'
       }).$promise;
+
+      if ($state.params.type === 'local') {
+        adsPromise = Products.getProducts({
+          category: 'ads',
+          isAds: true,
+          limit: 10,
+          populates: 'photos',
+          filter: '학교장터'
+        }).$promise;
+      } else {
+        adsPromise = Products.getProducts({
+          category: 'ads',
+          isAds: true,
+          limit: 10,
+          populates: 'photos',
+          filter: '유학장터'
+        }).$promise;
+      }
+
       $q.all([productsPromise, adsPromise])
         .then(function success(array) {
           var productsWrapper = array[0];

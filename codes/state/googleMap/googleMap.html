@@ -1,35 +1,62 @@
 <ion-view id="google-map"
-  hide-back-button="true"
+  cache-view="true"
 >
+
   <ion-nav-buttons side="left">
-      <button class="button button-clear icon ion-android-arrow-back"
-        ui-sref="main.postList({type: 'local'})"
-      >
-      </button>
+    <button class="button button-icon icon ion-android-arrow-back"
+      ng-click="goBack()"
+    >
+    </button>
   </ion-nav-buttons>
+
   <ion-nav-title>
     <div class="row zero row-main-title-logo flex">
       <div class="col">
-        <img src="img/main_page_Logo.png" class="main-title-logo">
+        <img src="img/uhakheader.png" class="main-title-logo">
       </div>
     </div>
   </ion-nav-title>
+
   <ion-nav-buttons side="right">
-      <!-- ng-click="Map.findMeThenSearchNearBy()" -->
     <button class="button button-icon icon ion-pinpoint"
+      ng-click="GoogleMap.setCenterByCurrentPosition()"
     >
     </button>
   </ion-nav-buttons>
 
   <ion-header-bar class="bar-subheader zero flex">
+    <div class="r1 row row-search flex zero">
+      <div class="c2 col-80 zero">
+          <!-- ng-enter="GoogleMap.setCenterByAddress(GoogleMap.search);" -->
+        <input id="daum-map-search-input" type="text"
+          placeholder="찾으실 역 또는 지역을 입력해주세요"
+          ng-model="GoogleMap.search"
+          ng-enter="GoogleMap.setCenterByPlace(GoogleMap.search)"
+        >
+      </div>
+      <div class="c3 col-10 flex"
+        ng-click="GoogleMap.setCenterByAddress(GoogleMap.search)"
+      >
+        <i class="ion-search"></i>
+      </div>
+    </div>
   </ion-header-bar>
 
-  <ion-content class="has-subheader"
-    data-tap-disable="true"
-    scroll="false"
+  <!-- data-tap-disabled="true" -->
+<ion-content class="has-subheader"
+  scroll="false"
+>
+  <div id="gm0"
+    google-map
+    icon="img/map_iconunselect.png"
+    active-icon="img/map_iconselect.png"
+    center-marker="true"
+    idle-event="true"
+    vm="GoogleMap"
+    places="GoogleMap.Model.products"
   >
-    <div google-map>
-    </div>
-  </ion-content>
+
+  </div>
+</ion-content>
 
 </ion-view>

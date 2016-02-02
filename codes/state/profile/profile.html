@@ -33,7 +33,7 @@
         <div class="col-photo col-25 flex-v">
           <div class="circle">
             <img class="profile-image"
-              ng-src="{{Profile.Model.dataArray[0] || appStorage.user.profile_picture}}">
+              ng-src="{{Profile.Model.dataArray[0] || appStorage.user.profile_picture.url || appStoage.user.profile_picture}}">
           </div>
         </div>
         <div class="col-35 col-photo-restrict-text">
@@ -62,7 +62,7 @@
 
     <section class="nickname-section wrapper-90">
       <p class="profile-photo-text yellow title zero">
-        닉네임
+        닉네임(4자 이상)
       </p>
       <div class="row zero row-input">
         <div class="col zero col-input">

@@ -148,6 +148,18 @@
             </div>
           </div>
 
+          <div class="col-30 col-map flex-v"
+            ng-if="isParam({type: 'abroad'})"
+            ng-click="loading(); goToState('main.googleMap', {id: PostDetail.Model.post.id})"
+          >
+            <div class="map-wrapper center">
+              <i class="map-icon ion-android-map"></i>
+              <p class="zero map-text">
+                지도에서보기
+              </p>
+            </div>
+          </div>
+
         </div>
         <div class="sub-container"
           ng-if="isParam({type: 'local'})"

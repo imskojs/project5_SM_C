@@ -36,12 +36,11 @@ var paths = {
     './codes/lib/moment/moment.js',
 
     './codes/lib/ionic/js/ionic.bundle.js',
-
     './codes/lib/ngstorage/ngStorage.js',
     './codes/lib/angular-resource/angular-resource.js',
     './codes/lib/ngCordova/dist/ng-cordova.js',
     './codes/lib/ng-file-upload//ng-file-upload.js',
-    './codes/lib/ng-tags-input/ng-tags-input.js',
+    './codes/lib/ngTagsInput/ng-tags-input.js',
   ]
 };
 

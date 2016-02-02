@@ -27,6 +27,7 @@
     PostRegister.getImage = getImage;
     PostRegister.searchPlace = searchPlace;
     PostRegister.selectPlace = selectPlace;
+    PostRegister.selectAbroadPlace = selectAbroadPlace;
     PostRegister.getPhoto = getPhoto;
     PostRegister.removePhoto = removePhoto;
     PostRegister.showCircle = showCircle;
@@ -278,6 +279,22 @@
       console.log(PostRegisterModel.form.address);
       console.log(PostRegisterModel.form.geoJSON);
       console.log(typeof PostRegisterModel.form.geoJSON.coordinates[0]);
+    }
+
+    function selectAbroadPlace(placeObj) {
+      PostRegister.searchWord = placeObj.formatted_address;
+      PostRegisterModel.form.address = placeObj.formatted_address;
+      PostRegisterModel.form.geoJSON = {
+        type: 'Point',
+        coordinates: [
+          Number(placeObj.geometry.location.lng()),
+          Number(placeObj.geometry.location.lat())
+        ]
+      };
+      PostRegisterModel.places = [];
+      $ionicScrollDelegate.resize();
+      console.log(PostRegisterModel.form.address);
+      console.log(PostRegisterModel.form.geoJSON);
     }
 
   } //end

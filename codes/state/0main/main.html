@@ -23,7 +23,7 @@
               <div class="circle">
                 <img class="profile-picture"
                   ng-hide="!appStorage.user.profile_picture"
-                  ng-src="{{appStorage.user.profile_picture}}"
+                  ng-src="{{ appStorage.user.profile_picture.url || appStorage.user.profile_picture }}"
                 >
               </div>
             </div>

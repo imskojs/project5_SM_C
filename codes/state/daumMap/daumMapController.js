@@ -55,10 +55,9 @@
       $ionicModal.fromTemplateUrl('state/daumMap/placeModal.html', {
         scope: $scope,
         animation: 'slide-in-up'
-      })
-        .then(function(modal) {
-          DaumMapModel.modal = modal;
-        });
+      }).then(function(modal) {
+        DaumMapModel.modal = modal;
+      });
       DaumMapModel.domMap.relayout();
       if ($stateParams.id) {
         DaumMapModel.findPlaceByIdThenDrawAPlace($stateParams.id);
