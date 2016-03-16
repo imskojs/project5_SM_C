@@ -9,7 +9,13 @@
   function AnnouncementDetailModel() {
 
     var model = {
-
+      comments: [{
+        content: 'test test test',
+        updatedAt: new Date(),
+        createdBy: {
+          nickname: 'ko'
+        }
+      }]
     };
     return model;
   }

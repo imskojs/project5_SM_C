@@ -1,0 +1,165 @@
+<ion-view id="mypage"
+  cache-view="true"
+  hide-back-button="true"
+>
+
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+        ng-click="goBack()"
+    >
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-title>
+    <div class="row zero row-main-title-logo flex">
+      <div class="col">
+        <img src="img/main_page_Logo.png" class="main-title-logo">
+      </div>
+    </div>
+  </ion-nav-title>
+
+  <ion-header-bar class="bar-subheader zero flex calm-bg">
+    <div class="row zero h44px flex">
+      <div class="col zero">
+        <p class="zero f20px center light-grey">
+          상점정보
+        </p>
+      </div>
+    </div>
+  </ion-header-bar>
+
+  <ion-content class="has-subheader post-list-content">
+      <!-- MyPage BG -->
+      <div class="relative h250px">
+        <div class="absolute p5px top5px right5px yellow-bg light-grey"
+          ng-click="goToState('main.myPageUpdate', {user: appStorage.user.id})"
+          ng-if="appStorage.user.id === MyPage.Model.user.id"
+        >
+          내상점 설정
+        </div>
+        <img class="w100p h250px"
+          ng-src="{{MyPage.Model.user | GetBgPhoto}}"
+        >
+        <div class="absolute h70px detail-container w100p bottom0px green-transparent-bg">
+          <p class="zero pl5px yellow f14px">
+            {{ MyPage.Model.user.title || 
+              MyPage.Model.user.nickname || 
+              MyPage.Model.user.name || 
+              MyPage.Model.user.username || '홍길동'}} 님의 상점
+          </p>
+          <p class="zero pl5px light-grey f12px pre">{{ MyPage.Model.user.content || '입력된 소개가 없습니다' }}
+          </p>
+        </div>
+      </div>
+
+      <div class="row zero">
+        <div class="col zero">
+          <p class="zero light-grey ml5px mt5px mb5px">
+            상품 <span class="green">{{MyPage.Model.total}}</span>
+          </p>
+        </div>
+        <div class="col zero mr5px">
+          <p class="zero light-grey ml5px mt5px mb5px"
+            style="text-align: right;"
+          >
+            방문자수 <span class="green">{{MyPage.Model.hostUser.visitCount || 0}}</span>
+          </p>
+          
+        </div>
+        
+      </div>
+
+      <!-- products -->
+      <div class="row row-list zero" ng-shadow>
+        <div class="col zero col-list"
+          collection-repeat="product in MyPage.Model.products"
+          item-height="160"
+          item-width="33%"
+          item-render-buffer="24"
+        >
+          <!-- product -->
+          <div class="list-content relative"
+            ng-click="
+              product.soldOut ? 
+                MyPage.showAlert() : 
+                goToState('main.postDetail', {type: product.type, id: product.id})"
+          >
+            <img class="list-image"
+              ng-src="{{product.photos[0].url | cloudinary150}}"
+            >
+            <div class="detail-container absolute">
+
+              <!-- First row -->
+              <p class="zero text-overflow post-title post-text">
+                {{product.name}}
+              </p>
+
+              <!-- Second row -->
+              <div class="row zero row-likes">
+                <div class="col-20 col-heart flex">
+                    <i class="heart-icon"></i>
+                </div>
+                <div class="col-20 col-likes">
+                  <p class="zero post-text text-overflow">
+                    {{product.likes}}
+                  </p>
+                </div>
+                <div class="col-20 col-bubble flex">
+                  <i class="bubble-icon"></i>
+                </div>
+                <div class="col-20 col-commentsCount">
+                  <p class="zero post-text text-overflow">
+                    {{product.commentsCount}}
+                  </p>
+                </div>
+              </div>
+
+              <div class="row zero row-price"
+                ng-if="product.type === 'local'"
+              >
+                <div class="col-auto zero">
+                  <p class="zero post-text post-category">
+                    [{{product.category | categoryToKorean}}]
+                  </p>
+                </div>
+                <div class="col zero">
+                  <p class="zero post-text post-price right text-overflow">
+                    {{product.price | number}}
+                  </p>
+                </div>
+              </div>
+
+              <div class="row zero row-price"
+                ng-if="isParam({type: 'abroad'})"
+              >
+                <div class="col zero">
+                  <p class="zero post-text post-price text-overflow">
+                    {{product.address}}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="sold-out-text-container absolute flex"
+              ng-if="product.soldOut === true"
+            >
+              <p class="zero yellow sold-out-text">
+                SoldOut
+              </p>
+            </div>
+
+          </div>
+        </div> <!-- col-list end -->
+      </div> <!-- row-list end -->
+
+      <ion-infinite-scroll
+        ng-if="MyPage.checkForMore()"
+        on-infinite="MyPage.getMoreProducts()"
+        distance="1%"
+        immediate-check="false"
+      >
+      </ion-infinite-scroll>
+
+  </ion-content>
+</ion-view>

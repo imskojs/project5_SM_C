@@ -43,7 +43,12 @@
           </ion-slide>
         </ion-slide-box>
 
-        <div class="row zero row-title">
+        <div class="row zero row-title"
+          ng-click="goToState('main.myPage', {
+            user: PostDetail.Model.post.createdBy.id,
+            type: $state.params.type
+          })"
+        >
           <div class="col-20 col-user-photo flex">
             <img class="user-photo"
               ng-src="{{PostDetail.getUserPhoto(PostDetail.Model.post.createdBy)}}">
@@ -138,7 +143,10 @@
           <!-- ng-if="isParam({type: 'abroad'})" -->
           <div class="col-30 col-map flex-v"
             ng-if="isParam({type: 'local'})"
-            ng-click="loading(); goToState('main.daumMap', {id: PostDetail.Model.post.id})"
+            ng-click="loading(); goToState('main.daumMap', {
+              id: PostDetail.Model.post.id,
+              type: $state.params.type
+            })"
           >
             <div class="map-wrapper center">
               <i class="map-icon ion-android-map"></i>
@@ -150,7 +158,10 @@
 
           <div class="col-30 col-map flex-v"
             ng-if="isParam({type: 'abroad'})"
-            ng-click="loading(); goToState('main.googleMap', {id: PostDetail.Model.post.id})"
+            ng-click="loading(); goToState('main.googleMap', {
+              id: PostDetail.Model.post.id,
+              type: $state.params.type
+            })"
           >
             <div class="map-wrapper center">
               <i class="map-icon ion-android-map"></i>

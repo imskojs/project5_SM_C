@@ -36,8 +36,11 @@
           }).$promise
           .then(function(data) {
             Message.hide();
+            console.log("data :::\n", data);
             GoogleMapModel.selectedPlace = data;
+            GoogleMapModel.products = [data];
             GoogleMapModel.places = [data];
+            $rootScope.$broadcast('$rootScope:bindDataComplete');
             $scope.$broadcast('relayout');
             console.log("GoogleMapModel.selectedPlace :::\n", GoogleMapModel.selectedPlace);
           })
@@ -67,7 +70,7 @@
       Message.loading();
       GoogleMapModel.modal.hide();
       $state.go(state, {
-        type: 'local',
+        type: 'abroad',
         id: GoogleMapModel.selectedPlace.id,
         prev: params.prev
       });
@@ -89,14 +92,15 @@
     //====================================================
     function productGetProductWithin() {
       return Products.getProductWithin({
-          type: 'local',
+          type: 'abroad',
           latitude: appStorage.gm0.lastCenter.lat,
           longitude: appStorage.gm0.lastCenter.lng,
-          distance: 9999999,
-          limit: 9999999
+          distance: 99999999999,
+          limit: 99999999999
         }).$promise
         .then(function(datasWrapper) {
           GoogleMapModel.products = datasWrapper.products;
+          console.log("GoogleMapModel.products :::\n", GoogleMapModel.products);
           $rootScope.$broadcast('$rootScope:bindDataComplete');
           $scope.$broadcast('relayout');
 
@@ -115,6 +119,7 @@
         .then(function(data) {
           Message.hide();
           GoogleMapModel.selectedPlace = data;
+          GoogleMapModel.products = [data];
           GoogleMapModel.places = [data];
           console.log("GoogleMapModel.selectedPlace :::\n", GoogleMapModel.selectedPlace);
           GoogleMapModel.modal.show();

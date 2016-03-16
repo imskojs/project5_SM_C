@@ -49,5 +49,55 @@
         </p>
       </div>
     </div>
+
+    <section class="comments-section">
+      <ul class="comments">
+        <li class="comment row zero flex-v"
+          ng-repeat="comment in AnnouncementDetail.Model.comments"
+        >
+          <img class="profile-image circle"
+            ng-src="{{AnnouncementDetail.getUserPhoto(comment.createdBy)}}"
+          >
+<!--           
+          <div class="col-2 child-comment"
+            ng-if="!comment.isParent"
+          >
+          </div>
+ -->
+          <div class="col zero col-comment-content">
+<!-- 
+            <div class="row zero row-cross"
+              ng-if="AnnouncementDetail.isWrittenByUser(comment.createdBy)"
+            >
+              <i class="icon ion-ios-close-empty"></i>
+            </div>
+ -->            
+            <div class="row zero row-comment-name-date">
+              <p class="zero name-text green">
+                {{comment.createdBy.nickname}}
+              </p>
+              <p class="zero date-text">
+                {{comment.updatedAt | date: 'yyyy.MM.dd HH:mm'}}
+              </p>
+            </div>
+
+            <div class="zero row row-comment-content-text">
+              <p class="zero comment-content-text pre">
+                {{comment.content}}
+              </p>
+            </div>
+<!-- 
+            <div class="row zero row-reply"
+              ng-if="comment.isParent"
+              ng-click="AnnouncementDetail.replyModalHandler(comment);"
+            >
+              <p class="zero reply-text">답글</p>
+            </div>
+ -->
+          </div>
+        </li> <!-- comment ends -->
+      </ul>
+    </section>
+
   </ion-content>
 </ion-view>

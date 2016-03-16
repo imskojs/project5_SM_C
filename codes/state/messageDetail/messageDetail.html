@@ -38,8 +38,9 @@
           <p class="zero message-text">
             {{message.message}}
           </p>
+            <!-- {{message.updatedAt | date: 'yyyy.MM.dd HH:mm'}} -->
           <p class="zero date-text small right">
-            {{message.updatedAt | date: 'yyyy.MM.dd HH:mm'}}
+            {{message.createdAt | date: 'yyyy.MM.dd HH:mm'}}
           </p>
         </div>
       </div>

@@ -33,7 +33,7 @@
         <div class="col-photo col-25 flex-v">
           <div class="circle">
             <img class="profile-image"
-              ng-src="{{Profile.Model.dataArray[0] || appStorage.user.profile_picture.url || appStoage.user.profile_picture}}">
+              ng-src="{{Profile.Model.dataArray[0] || (appStoage.user.profile_picture && appStorage.user.profile_picture.url) || appStorage.user.profile_picture}}">
           </div>
         </div>
         <div class="col-35 col-photo-restrict-text">

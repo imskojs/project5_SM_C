@@ -10,9 +10,11 @@
   function Users($resource, governorUrl) {
 
     var userUrl = governorUrl + '/:auth' + '/:register' + '/:user' + '/:local' +
-      '/:checkNickname' + '/:list' + '/:role' + '/:myrole' + '/:update' + '/:updateWithImage';
+      '/:checkNickname' + '/:list' + '/:role' + '/:myrole' + '/:update' + '/:updateWithImage' +
+      '/:findOne' + ':visit';
 
     var params = {
+      findOne: '@findOne',
       auth: '@auth',
       register: '@register',
       user: '@user',
@@ -20,10 +22,26 @@
       list: '@list',
       role: '@role',
       myrole: '@myrole',
-      updateWithImage: '@updateWithImage'
+      updateWithImage: '@updateWithImage',
+      visit: '@visit'
     };
 
     var actions = {
+      visit: {
+        method: 'GET',
+        params: {
+          user: 'user',
+          visit: 'visit'
+        }
+      },
+
+      findOne: {
+        method: 'GET',
+        params: {
+          user: 'user',
+          findOne: 'findOne'
+        }
+      },
       getUsers: {
         method: 'GET',
         params: {

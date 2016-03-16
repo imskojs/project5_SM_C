@@ -50,10 +50,10 @@
         return PostDetail.requestLoginModal.show();
       }
       Comments.addCommentToPost({}, {
-        content: comment,
-        product: $stateParams.id,
-        isParent: true
-      }).$promise
+          content: comment,
+          product: $stateParams.id,
+          isParent: true
+        }).$promise
         .then(function success(data) {
           console.log(data);
           // PostDetailModel.post.comments.push(data);
@@ -112,9 +112,9 @@
       var message = PostDetail.message;
       Message.loading();
       Messages.sendMessage({}, {
-        message: message,
-        to: PostDetailModel.post.createdBy.id
-      }).$promise
+          message: message,
+          to: PostDetailModel.post.createdBy.id
+        }).$promise
         .then(function success(message) {
           console.log(message);
           Message.hide();
@@ -161,7 +161,7 @@
     }
 
     function onBeforeEnter() {
-      Message.loading();
+      // Message.loading();
       reset();
       findById($stateParams.id);
     }
@@ -210,6 +210,7 @@
       if (!appStorage.token) {
         throw new Error('not logged in');
       }
+      Message.hide();
       return Comments
         .find({
           productId: post.id
@@ -219,10 +220,7 @@
     function processComments(comments) {
       PostDetailModel.comments = comments;
       Message.hide();
-      console.log("---------- comments ----------");
-      console.log(comments);
-      console.log("HAS TYPE: " + typeof comments);
-      console.log("---------- CONSOLE END -------------------");
+      console.log("PostDetailModel.post :::\n", PostDetailModel.post);
     }
 
     //====================================================

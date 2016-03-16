@@ -18,7 +18,9 @@
     <ion-side-menu side="left" class="side-menu-container">
       <ion-content class="side-menu-content">
         <section class="side-menu-header">
-          <div class="row zero row-header">
+          <div class="row zero row-header"
+            ng-click="goToState('main.myPage', {user: appStorage.user.id})"
+          >
             <div class="col-25 col-header">
               <div class="circle">
                 <img class="profile-picture"

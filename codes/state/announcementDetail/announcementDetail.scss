@@ -17,7 +17,6 @@
       color: white;
       font-size: 18px;
       letter-spacing: -0.5px;
-
     }
     .row-meta {
       margin: {
@@ -52,5 +51,71 @@
       font-size: 14px;
     }
   }
-
+  .comments-section {
+    .comment {
+      padding: {
+        top: 5px;
+        bottom: 5px;
+      }
+      margin-bottom: 5px;
+      border-bottom: 1px solid darken($light-grey, 50);
+      .profile-image {
+        width: 50px;
+        height: 50px;
+        align-self: flex-start;
+      }
+      .child-comment {
+        height: 15px;
+        align-self: flex-start;
+        border-left: 1px solid $green;
+        border-bottom: 1px solid $green;
+        margin-left: 3%;
+        margin-top: -2px;
+      }
+      .date-text {
+        margin-left: 5px;
+      }
+      .col-comment-content {
+        margin-left: 7px;
+        .row-cross {
+          justify-content: flex-end;
+          .icon {
+            padding: {
+              right: 5%;
+              left: 5%;
+            }
+          }
+        }
+        .row-reply {
+          justify-content: flex-end;
+          .reply-text {
+            padding: {
+              right: 5%;
+              left: 5%;
+            }
+            font-size: 14px;
+            color: darken($green, 15);
+          }
+        }
+        .ion-ios-close-empty::before {
+          font-size: 30px;
+          color: white;
+        }
+        .name-text {
+          font-size: 13px;
+        }
+        .date-text {
+          font-size: 10px;
+          align-self: flex-end;
+          color: darken($light-grey, 30);
+        }
+        .comment-content-text {
+          margin-top: 5px;
+          font-size: 13px;
+          line-height: 120%;
+          color: $light-grey;
+        }
+      }
+    }
+  }
 }

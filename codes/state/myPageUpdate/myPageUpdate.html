@@ -1,0 +1,108 @@
+<ion-view id="mypage-update"
+    cache-view="true"
+    hide-back-button="false"
+>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+      ng-click="goBack(); MyPageUpdate.reset();"
+    >
+    </button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    <div class="row zero row-main-title-logo flex">
+      <div class="col">
+        <img src="img/main_page_Logo.png" class="main-title-logo">
+      </div>
+    </div>
+  </ion-nav-title>
+
+  <ion-header-bar class="bar bar-subheader bar-light zero"
+      no-tap-scroll="true"
+  >
+    <div class="row zero flex height-100">
+      <div class="col zero flex">
+        <h2 class="subheader-title center zero">
+          <span>내 상점 설정</span>
+        </h2>
+      </div>
+    </div>
+  </ion-header-bar>
+
+  <ion-content class="has-subheader bg-stable">
+    <div class="row row-product-photo wrapper-90">
+      <div class="col-50 zero col-main-image">
+        <div class="photo-frame flex relative">
+
+          <img class="main-photo w100p"
+            ng-if="MyPageUpdate.Model | GetBgUpdatePhoto"
+            ng-src="{{(MyPageUpdate.Model | GetBgUpdatePhoto)}}"
+          >
+
+          <p class="zero small pre light-grey"
+            ng-if="!(MyPageUpdate.Model | GetBgUpdatePhoto)"
+          > 사진을 등록해주세요
+          </p>
+ 
+        </div>
+      </div>
+      <div class="col-48 zero col-buttons">
+        <p class="zero button-text top-button center radius"
+          ng-click="MyPageUpdate.getImage('camera')"
+        >
+          사진찍기
+        </p>
+        <p class="zero button-text center radius"
+          ng-click="MyPageUpdate.getImage('gallery')"
+        >
+          사진 고르기
+        </p>
+      </div>
+    </div>
+    <p class="zero small light-grey pre ml5px center">저작권침해 또는 지나치게 
+    선정적인 이미지를 쓸 경우 불이익을 당할 수 있습니다
+    </p>
+
+    <hr class="section-divider">
+
+    <section class="title-section input-section wrapper-90">
+      <p class="yellow title zero">
+        제목
+      </p>
+      <div class="row-input">
+        <div class="col-input">
+          <input type="text" class="input-field" placeholder="제목을 입력해주세요"
+            ng-model="MyPageUpdate.Model.user.title"
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section input-section wrapper-90">
+      <p class="yellow title zero">
+        내용
+      </p>
+      <div class="row-input">
+        <div class="col-input">
+          <input type="text" class="input-field" placeholder="내용을 입력해주세요"
+            ng-model="MyPageUpdate.Model.user.content"
+          >
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <hr class="section-divider">
+
+
+    <div class="row wrapper-90 flex row-button">
+      <p class="zero submit-button center radius"
+        ng-click="MyPageUpdate.updateMyPage()"
+      >
+        저장 /변경 하기
+      </p>
+    </div>
+
+  </ion-content>
+</ion-view>

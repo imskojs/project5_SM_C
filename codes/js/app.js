@@ -128,6 +128,7 @@
         if ($window.cordova && $window.cordova.plugins.Keyboard) {
           $window.cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
           $state.go('main.home');
+          // $state.go('main.myPageUpdate');
         }
         if ($window.StatusBar) {
           $window.StatusBar.styleDefault();
@@ -171,7 +172,8 @@
       }
 
 
-      // $state.go('main.home');
+      $state.go('main.home');
+      // $state.go('main.home')
 
     }
   ])
@@ -185,15 +187,14 @@
       $httpProvider.interceptors.push('AuthInterceptor');
 
       $stateProvider
-
         .state('main', {
-        url: '/main',
-        templateUrl: 'state/0main/main.html',
-        controller: 'MainController as Main'
-      })
+          url: '/main',
+          templateUrl: 'state/0main/main.html',
+          controller: 'MainController as Main'
+        })
 
       .state('main.daumMap', {
-        url: '/daumMap/:id/:findMe',
+        url: '/daumMap/:id/:findMe/:type',
         views: {
           main: {
             templateUrl: 'state/daumMap/daumMap.html',
@@ -203,7 +204,7 @@
       })
 
       .state('main.googleMap', {
-        url: '/googleMap/:id',
+        url: '/googleMap/:id/:type',
         views: {
           main: {
             templateUrl: 'state/googleMap/googleMap.html',
@@ -382,7 +383,7 @@
       })
 
       .state('main.map', {
-        url: '/map/:id',
+        url: '/map/:id/:type',
         views: {
           main: {
             templateUrl: 'state/map/map.html',
@@ -391,15 +392,47 @@
         }
       })
 
-      .state('main.test', {
-        url: 'test/:id',
+      .state('main.nearestList', {
+        url: '/nearestList',
         views: {
           main: {
-            templateUrl: 'state/test/test.html',
-            controller: 'TestController as Test'
+            templateUrl: 'state/nearestList/nearestList.html',
+            controller: 'NearestListController as NearestList'
+          }
+        }
+      })
+
+      .state('main.myPage', {
+        url: '/myPage/:user/:type',
+        views: {
+          main: {
+            templateUrl: 'state/myPage/myPage.html',
+            controller: 'MyPageController as MyPage'
+          }
+        }
+      })
+
+      .state('main.myPageUpdate', {
+        url: '/myPageUpdate/:user',
+        views: {
+          main: {
+            templateUrl: 'state/myPageUpdate/myPageUpdate.html',
+            controller: 'MyPageUpdateController as MyPageUpdate'
           }
         }
       });
+
+
+
+      // .state('main.test', {
+      //   url: 'test/:id',
+      //   views: {
+      //     main: {
+      //       templateUrl: 'state/test/test.html',
+      //       controller: 'TestController as Test'
+      //     }
+      //   }
+      // });
 
 
 

@@ -1,0 +1,52 @@
+<ion-view id="nearest-list"
+    cache-view="true"
+    hide-back-button="false"
+>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon icon ion-android-arrow-back"
+        ng-click="goBack()"
+    >
+    </button>
+  </ion-nav-buttons>
+  <ion-nav-title>
+    목록보기
+  </ion-nav-title>
+
+  <ion-header-bar class="bar-subheader zero flex calm-bg">
+    <div class="row zero h44px flex">
+      <div class="col zero">
+        <p class="zero f20px center light-grey">
+          주변지역 상품 보기 <span class="f14px yellow">(거리순)</span>
+        </p>
+      </div>
+    </div>
+  </ion-header-bar>
+
+  <ion-content class="has-subheader positive-bg">
+    <p class="zero light-grey f20px center mt50px"
+      ng-if="NearestList.Model.products.length === 0"
+    >
+      로딩중
+    </p>
+    <div class="row zero row-message-list flex-v p5px"
+      ng-repeat="product in NearestList.Model.products"
+    >
+      <div class="col-25">
+        <img class="yellow-b w100p h60px fit"
+          ng-src="{{ product.photos[0].url | cloudinary150 }}"
+        >
+      </div>
+      <div class="col zero ml5px text-overflow">
+        <p class="zero light-grey text-overflow w100p">
+          {{product.name}}
+        </p>
+        <p class="zero yellow f14px text-overflow w100p">
+          {{product.address}}
+        </p>
+        <p class="zero green f14px text-overflow w100p">
+          {{product.createdBy.nickname}}
+        </p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

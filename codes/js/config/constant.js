@@ -33,9 +33,8 @@
 
   angular.module('app')
     .constant("governorUrl", "http://52.68.158.234")
-  // .constant("governorUrl", "http://192.168.0.65:1337")
-  // .constant("governorUrl", "http://192.168.0.13:1337")
-  .constant("appName", "schoolMarket")
+    // .constant("governorUrl", "http://192.168.0.65:1338")
+    .constant("appName", "schoolMarket")
     .constant("appId", 3)
     .constant("googlePushSenderID", "80216654611")
     .constant("kakaoKey", "bdb254de02ea0b7521635ba469608674")

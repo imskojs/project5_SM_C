@@ -130,15 +130,18 @@
             Dom.focusById('email');
           });
       }
+      $rootScope.$broadcast('scroll.refreshComplete');
+      $rootScope.$broadcast('scroll.infiniteScrollComplete');
       return Message.alert();
     }
 
-    function bindData(data, model, name, emitEventTrue, loadingModel) {
+    function bindData(data, model, name, emitEventTrue, loadingModel, noUpdateResize) {
       $timeout(function() {
         // if data is a dataArrayWrapper
         if (name[name.length - 1] === 's') {
           model[name] = data[name];
-          model.more = data.more;
+          model.more = data.more !== undefined ? data.more : model.more;
+          model.total = data.total !== undefined ? data.total : model.total;
         } else {
           // if data is a dataObject 
           model[name] = data;
@@ -149,8 +152,11 @@
           loadingModel.loading = false;
         }
         freeze(false);
-        update();
-        resize();
+        if (!noUpdateResize) {
+          update();
+          resize();
+        }
+        $rootScope.$broadcast('scroll.refreshComplete');
         if (emitEventTrue) {
           $rootScope.$broadcast('$rootScope:bindDataComplete');
         }
@@ -166,6 +172,7 @@
           model.more = dataWrapper.more;
           freeze(false);
           resize();
+          $rootScope.$broadcast('scroll.infiniteScrollComplete');
           if (emitEventTrue) {
             $rootScope.$broadcast('$rootScope:appendDataComplete');
           }

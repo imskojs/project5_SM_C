@@ -8,15 +8,25 @@
 
   function Comments($resource, governorUrl) {
 
-    var commentUrl = governorUrl + '/:post' + '/:comment' + '/:reply';
+    var commentUrl = governorUrl + '/:post' + '/:comment' + '/:reply' + ':find';
 
     var params = {
       post: '@post',
       comment: '@comment',
-      reply: '@reply'
+      reply: '@reply',
+      find: '@find'
     };
 
     var actions = {
+      find: {
+        method: 'GET',
+        params: {
+          comment: 'comment',
+          find: 'find',
+          post: ''
+        }
+      },
+
       addCommentToPost: {
         method: 'POST',
         params: {
@@ -24,19 +34,13 @@
           comment: 'comment'
         }
       },
+
       reply: {
         method: 'POST',
         params: {
           comment: 'comment',
           reply: 'reply'
         }
-      },
-      find: {
-        method: 'GET',
-        params: {
-          comment: 'comment'
-        },
-        isArray: true
       }
     };
 

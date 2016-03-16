@@ -201,13 +201,19 @@
                 return false;
               }
               if ($state.params.id) {
+                console.log("geoJson.features[0].geometry.coordinates[1] :::\n", geoJson.features[0].geometry.coordinates[1]);
+                console.log("geoJson.features[0].geometry.coordinates[0] :::\n", geoJson.features[0].geometry.coordinates[0]);
                 map.setCenter(new google.maps.LatLng(
-                  Number(geoJson.features[0] && geoJson.features[0].geometry.coordinates[1]),
-                  Number(geoJson.features[0] && geoJson.features[0].geometry.coordinates[0])
+                  (geoJson.features[0] && geoJson.features[0].geometry.coordinates[1] /*+ 0.00655043392 */ ),
+                  (geoJson.features[0] && geoJson.features[0].geometry.coordinates[0] /*- 0.0081287461 */ )
                 ));
+                // map.setCenter(new google.maps.LatLng(
+                //   Number(geoJson.features[0] && geoJson.features[0].geometry.coordinates[1]),
+                //   Number(geoJson.features[0] && geoJson.features[0].geometry.coordinates[0])
+                // ));
               }
               map.data.addGeoJson(geoJson);
-            }, 0);
+            }, 5);
           });
 
           map.data.addListener('click', function(event) {
@@ -223,17 +229,20 @@
           scope.$on('relayout', function() {
             $timeout(function() {
               google.maps.event.trigger(map, 'resize');
-            }, 5);
+            }, 0);
           });
 
           if (attrs.idleEvent === 'true') {
-            map.addListener('idle', function() {
-              var lng = map.getCenter().lng();
-              var lat = map.getCenter().lat();
-              appStorage[attrs.id].lastCenter.lat = lat;
-              appStorage[attrs.id].lastCenter.lng = lng;
-              scope.$emit('googleMap:centerChanged', appStorage[attrs.id].lastCenter);
-            });
+            if (!$state.params.id) {
+              map.addListener('idle', function() {
+                var lng = map.getCenter().lng();
+                var lat = map.getCenter().lat();
+                appStorage[attrs.id].lastCenter.lat = lat;
+                appStorage[attrs.id].lastCenter.lng = lng;
+                scope.$emit('googleMap:centerChanged', appStorage[attrs.id].lastCenter);
+              });
+
+            }
           }
 
         }; /*link ends*/

@@ -78,7 +78,7 @@
       Message.loading();
       $timeout(function() {
         Message.hide();
-      }, 2000);
+      }, 1500);
     }
     //====================================================
     //  $rootScope.closeSideMenu();
