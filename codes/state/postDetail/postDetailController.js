@@ -217,8 +217,8 @@
         }).$promise;
     }
 
-    function processComments(comments) {
-      PostDetailModel.comments = comments;
+    function processComments(commentsWrapper) {
+      PostDetailModel.comments = commentsWrapper.comments;
       Message.hide();
       console.log("PostDetailModel.post :::\n", PostDetailModel.post);
     }

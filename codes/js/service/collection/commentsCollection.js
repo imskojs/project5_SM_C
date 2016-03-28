@@ -23,7 +23,6 @@
         params: {
           comment: 'comment',
           find: 'find',
-          post: ''
         }
       },
 
